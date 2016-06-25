@@ -1,0 +1,8 @@
+<h1>Welcome to the Ballot</h1>
+<% if ENV['FACEBOOK_KEY'] %>
+  <%= link_to "Sign In with Facebook", '/auth/facebook', class: 'btn btn-success' %>
+<% end %>
+<% if Rails.env.development? %>
+  <%= link_to "Sign In with Developer Mode", '/auth/developer', class: 'btn btn-primary' %>
+<% end %>
+
