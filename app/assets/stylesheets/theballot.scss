@@ -1,5 +1,5 @@
 body {
-  background: image_url("theme/background.gif") repeat-x;
+  background: #152f49 image_url("theme/background.gif") repeat-x;
 }
 
 .navbar--logo {
@@ -29,6 +29,8 @@ body {
   margin-top:40px;
   background-color: #e9e0c2;
   border-radius: 10px 10px;
+  padding-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .main-content--landing {
