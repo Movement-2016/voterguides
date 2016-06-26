@@ -3,18 +3,30 @@
   <head>
     <title>Voterguides</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if current_user %>
-      <p>
-        <%= current_user.name %>
-        <%= link_to "Log out", logout_path %>
-      </p>
-    <% end %>
-    <%= yield %>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <%= image_tag "theme/logo.jpg" %>
+        </div>
+      </header>
+      <% if current_user %>
+        <p>
+          <%= current_user.name %>
+          <%= link_to "Log out", logout_path %>
+        </p>
+      <% end %>
+      <div class="row main-content">
+        <div class="col-xs-12">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
