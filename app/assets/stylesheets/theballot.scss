@@ -19,7 +19,7 @@ body {
   margin-top: 20px;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .theballot--navbar-collapse {
     background-color: #222;
   }
@@ -35,7 +35,7 @@ body {
   text-align: center;
 }
 
-.navbar-inverse .user_nav--item, .navbar-nav > li > a.user_nav--item  {
+.navbar-nav > li > a.user_nav--item  {
   color: #fffa86;
   font-weight: bold;
 }

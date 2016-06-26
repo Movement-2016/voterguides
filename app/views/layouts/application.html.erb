@@ -29,7 +29,7 @@
             <% if current_user %>
               <div class="collapse navbar-collapse theballot--navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                  <li><p class='navbar-text user_nav--item'><%= current_user.name %></p></li>
+                  <li><%= link_to current_user.name, '#', class: 'user_nav--item' %></li>
                   <li><%= link_to "Log out", logout_path, class: 'user_nav--item' %></li>
                 </ul>
               </div>
