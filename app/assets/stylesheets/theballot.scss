@@ -2,10 +2,27 @@ body {
   background: image_url("theme/background.gif") repeat-x;
 }
 
-.logo {
+.navbar--logo {
   height: 67px;
+  width: 196px;
   margin-top: 4px;
   overflow: hidden;
+  display: block;
+}
+
+.navbar.theballot--navbar {
+  border: 0px;
+  background: transparent;
+}
+
+.theballot--navbar-toggle {
+  margin-top: 20px;
+}
+
+@media (max-width: 720px) {
+  .theballot--navbar-collapse {
+    background-color: #222;
+  }
 }
 
 .main-content {
@@ -16,4 +33,9 @@ body {
 
 .main-content--landing {
   text-align: center;
+}
+
+.navbar-inverse .user_nav--item, .navbar-nav > li > a.user_nav--item  {
+  color: #fffa86;
+  font-weight: bold;
 }
