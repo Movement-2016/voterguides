@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  target_city: MyString
+  target_state: MyString
+  election_date: 2016-06-26
+
+two:
+  name: MyString
+  target_city: MyString
+  target_state: MyString
+  election_date: 2016-06-26

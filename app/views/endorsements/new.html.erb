@@ -1,0 +1,32 @@
+<% if @endorsement.errors.any? %>
+  <div class="alert alert-danger">
+    <% @endorsement.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_for @endorsement do |f| %>
+  <div class="form-group">
+    <%= f.label :jurisdiction %>
+    <small>Yuba County, Transport District 6, Baltimore Ward 4, City of Springfield, State of AL, US</small>
+    <%= f.text_field :jurisdiction, placeholder: 'District 21', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :office %>
+    <%= f.text_field :office, placeholder: 'Superior Court Justice', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :candidate_name, "Endorsed Candidate" %>
+    <%= f.text_field :candidate_name, placeholder: 'Sandra Day O\'Connor', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :explanation, "Why this Candidate?" %>
+    <%= f.text_area :explanation, placeholder: 'I did five minutes of research and here\'s what I discovered', class: 'form-control' %>
+  </div>
+
+  <%= f.checkbox :highlight, class: 'form-control' %>
+  <%= f.label :highlight, "Highlight this Endorsement in Guide Description" %>
+
+  <%= f.submit "Add Endorsement" %>
+<% end %>

@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625212604) do
+ActiveRecord::Schema.define(version: 20160627041516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "endorsements", force: :cascade do |t|
+    t.string   "office"
+    t.string   "candidate_name"
+    t.string   "jurisdiction"
+    t.text     "explanation"
+    t.boolean  "highlight"
+    t.integer  "voter_guide_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["voter_guide_id"], name: "index_endorsements_on_voter_guide_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.json     "auth_hash"
@@ -25,4 +37,14 @@ ActiveRecord::Schema.define(version: 20160625212604) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "voter_guides", force: :cascade do |t|
+    t.string   "name"
+    t.string   "target_city"
+    t.string   "target_state"
+    t.date     "election_date"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_foreign_key "endorsements", "voter_guides"
 end
