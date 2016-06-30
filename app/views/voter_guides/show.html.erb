@@ -1,0 +1,33 @@
+<h2><%= @voter_guide.name %></h2>
+<p><%= @voter_guide.target_city %>, <%= @voter_guide.target_state %></p>
+<p>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></p>
+
+<h3>Endorsements</h3>
+<div id="endorsement_list" class="panel-group" role="tablist" aria-multiselectable="true">
+  <% @voter_guide.endorsements.each do |endorsement| %>
+    <div class="panel">
+      <div class="panel-heading" role="tab" id="endorsement--heading-<%= endorsement.to_param %>">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#endorsement_list" href="#collapse-endorsement-<%= endorsement.to_param %>" aria-expanded="false" aria-controls="collapse-endorsement-<%= endorsement.to_param %>">
+          <% if endorsement.highlight %>*<% end %>
+          <%= endorsement.candidate_name %>
+          for
+          <%= endorsement.jurisdiction %>
+          <%= endorsement.office %>
+        </a>
+      </div>
+      <div id="collapse-endorsement-<%= endorsement.to_param %>"  class="panel-collapse collapse" role="tabpanel" aria-labelledby="endorsement--heading-<%= endorsement.to_param %>">
+        <div class="panel-body">
+          <%= simple_format endorsement.explanation %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= simple_form_for @voter_guide do |f| %>
+    <div id="endorsements">
+      <div class="endorsements--links">
+        <%= link_to_add_association 'add endorsement', f, :endorsements, partial: 'endorsements/form' %>
+      </div>
+    </div>
+    <%= f.button :submit, "Done" %>
+  <% end %>
+</div>

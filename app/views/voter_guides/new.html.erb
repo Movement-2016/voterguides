@@ -1,29 +1,10 @@
 <h2>Create your voter guide</h2>
 
-<% if @voter_guide.errors.any? %>
-  <div class="alert alert-danger">
-    <% @voter_guide.errors.full_messages.each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-<% end %>
-
-<%= form_for @voter_guide do |f| %>
-  <div class="form-group">
-    <%= f.label :name, "Guide Title" %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :target_city, "Guide City" %>
-    <%= f.text_field :target_city, placeholder: "Indianapolis", class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :target_state, "Guide State" %>
-    <%= f.select :target_state, VoterGuide::STATES, { include_blank: 'Select State' }, { class: 'form-control'} %>
-  </div>
-  <div class="form-group">
-    <%= f.label :election_date, "Election Date" %>
-    <%= f.date_field :election_date, class: 'form-control' %>
-  </div>
-  <%= f.submit "Ready", class: "btn btn-default" %>
+<%= simple_form_for @voter_guide do |f| %>
+  <%= f.error :base, :error_method => :to_sentence %>
+  <%= f.input :name, label: "Guide Title"  %>
+  <%= f.input :target_city, label: "Guide City", placeholder: "Indianapolis" %>
+  <%= f.input :target_state, label: "Guide State", collection: VoterGuide::STATES, include_blank: "Select State" %>
+  <%= f.input :election_date, as: :datepicker %>
+  <%= f.button :submit, "Ready" %>
 <% end %>
