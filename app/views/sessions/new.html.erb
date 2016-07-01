@@ -1,8 +1,9 @@
 <h1>Welcome to the Ballot</h1>
+<p>To create or endorse a voterguide, you'll need to log in</p>
 <% if ENV['FACEBOOK_KEY'] %>
-  <%= link_to "Sign In with Facebook", '/auth/facebook', class: 'btn btn-success' %>
+  <p><%= link_to "Sign In with Facebook", '/auth/facebook', class: 'btn btn-success' %></p>
 <% end %>
 <% if Rails.env.development? %>
-  <%= link_to "Sign In with Developer Mode", '/auth/developer', class: 'btn btn-primary' %>
+  <p><%= link_to "Sign In with Developer Mode", '/auth/developer', class: 'btn btn-primary' %></p>
 <% end %>
 

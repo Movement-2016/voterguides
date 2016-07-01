@@ -1,4 +1,6 @@
 class VoterGuidesController < ApplicationController
+  before_filter :require_login, except: [:show, :index]
+
   def new
     @voter_guide = VoterGuide.new
   end
