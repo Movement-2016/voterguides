@@ -3,4 +3,6 @@ class Endorsement < ApplicationRecord
 
   validates :office, presence: true
   validates :candidate_name, presence: true
+
+  scope :highlighted, -> { where(highlight: true)}
 end

@@ -1,0 +1,14 @@
+<h2>Voter Guides</h2>
+
+<ul>
+  <% @voter_guides.each do |voter_guide| %>
+    <li>
+      <h4><%= voter_guide.name %></h4>
+      <p><%= voter_guide.endorsements.size %> endorsements</p>
+      <% voter_guide.endorsements.highlighted.each do |endorsement | %>
+        <%= render 'endorsement', endorsement: endorsement %>
+      <% end %>
+      <%= link_to "more", voter_guide_path(voter_guide) %>
+    </li>
+  <% end %>
+</ul>

@@ -19,6 +19,10 @@ class VoterGuidesController < ApplicationController
 
   end
 
+  def index
+    @voter_guides = VoterGuide.upcoming
+  end
+
   def update
     @voter_guide = VoterGuide.find(params[:id])
     if @voter_guide.update(voter_guide_params)
