@@ -36,7 +36,9 @@ gem 'simple_form'
 gem 'cocoon'
 gem 'cancancan'
 
-# used for populating staging sites
+# used for populating sample voter guides
+gem 'factory_girl'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
