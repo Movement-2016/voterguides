@@ -1,4 +1,5 @@
 <h2><%= @voter_guide.name %></h2>
+<div><%= link_to "View Guide", voter_guide_path %></div>
 <div><%= @voter_guide.target_city %>, <%= @voter_guide.target_state %></div>
 <div>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></div>
 
@@ -13,7 +14,7 @@
         <%= link_to_add_association 'add endorsement', f, :endorsements, partial: 'endorsements/form' %>
       </div>
     </div>
-    <%= f.button :submit, "Done" %>
+    <%= f.button :submit, "Update" %>
   <% end %>
 </div>
 
