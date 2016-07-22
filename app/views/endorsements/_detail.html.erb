@@ -11,9 +11,11 @@
   <div id="collapse-endorsement-<%= endorsement.to_param %>"  class="panel-collapse collapse" role="tabpanel" aria-labelledby="endorsement--heading-<%= endorsement.to_param %>">
     <div class="panel-body">
       <%= simple_format endorsement.explanation %>
-      <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-endorsement-edit-<%= endorsement.to_param %>" aria-expanded="false" aria-controls="collapse-endorsement-edit-<%= endorsement.to_param %>">
-        Edit
-      </a>
+      <% if endorsement_form %>
+        <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-endorsement-edit-<%= endorsement.to_param %>" aria-expanded="false" aria-controls="collapse-endorsement-edit-<%= endorsement.to_param %>">
+          Edit
+        </a>
+      <% end %>
 
     </div>
   </div>

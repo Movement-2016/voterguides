@@ -23,6 +23,12 @@ body {
   .theballot--navbar-collapse {
     background-color: #222;
   }
+
+  #searchable_map {
+    width: 80%;
+    height: 200px;
+    margin: 0 auto;
+  }
 }
 
 .main-content {
@@ -41,3 +47,8 @@ body {
   color: #fffa86;
   font-weight: bold;
 }
+
+.searchable_map_container {
+  text-align: center;
+}
+

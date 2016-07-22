@@ -8,7 +8,7 @@ class VoterGuidesController < ApplicationController
   def create
     @voter_guide = VoterGuide.new(voter_guide_params)
     if @voter_guide.save
-      redirect_to voter_guide_path(@voter_guide)
+      redirect_to edit_voter_guide_path(@voter_guide)
     else
       render :new
     end
@@ -16,19 +16,24 @@ class VoterGuidesController < ApplicationController
 
   def show
     @voter_guide = VoterGuide.find(params[:id])
-
   end
 
   def index
-    @voter_guides = VoterGuide.upcoming
+    search = VoterGuide.upcoming
+    search = search.by_state(params[:search_state]) if params[:search_state]
+    @voter_guides = search
+  end
+
+  def edit
+    @voter_guide = VoterGuide.find(params[:id])
   end
 
   def update
     @voter_guide = VoterGuide.find(params[:id])
     if @voter_guide.update(voter_guide_params)
-      redirect_to voter_guide_path(@voter_guide)
+      redirect_to edit_voter_guide_path(@voter_guide)
     else
-      render @show
+      render :show
     end
   end
 

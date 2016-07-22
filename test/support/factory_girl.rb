@@ -35,7 +35,7 @@ FactoryGirl.define do
     transient { current_office }
     office { current_office.name }
     jurisdiction { current_office.jurisdiction }
-    explanation { Faker::Lorem.paragraphs(rand(3) + 1).join("\n")}
+    explanation { Faker::Lorem.paragraphs(rand(3) + 1).join("\n\n")}
     highlight { rand(5) == 0 }
     candidate_name { Faker::Name.name }
   end

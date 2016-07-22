@@ -1,14 +1,19 @@
 <h2>Voter Guides</h2>
 
-<ul>
-  <% @voter_guides.each do |voter_guide| %>
-    <li>
-      <h4><%= voter_guide.name %></h4>
-      <p><%= voter_guide.endorsements.size %> endorsements</p>
-      <% voter_guide.endorsements.highlighted.each do |endorsement | %>
-        <%= render 'endorsement', endorsement: endorsement %>
-      <% end %>
-      <%= link_to "more", voter_guide_path(voter_guide) %>
-    </li>
-  <% end %>
-</ul>
+<% if @voter_guides.empty? %>
+  <p>No voter guides found for <%= params[:search_state] %></p>
+<% else %>
+  <ul>
+    <% @voter_guides.each do |voter_guide| %>
+      <li>
+        <h4><%= link_to voter_guide.name, voter_guide_path(voter_guide) %></h4>
+        <div><%= voter_guide.target_city %>, <%= voter_guide.target_state %></div>
+        <p><%= voter_guide.endorsements.size %> endorsements</p>
+        <% voter_guide.endorsements.highlighted.each do |endorsement | %>
+          <%= render 'endorsement', endorsement: endorsement %>
+        <% end %>
+        <%= link_to "more", voter_guide_path(voter_guide) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
