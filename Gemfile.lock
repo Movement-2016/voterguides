@@ -59,10 +59,6 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.7.0)
-    factory_girl (4.7.0)
-      activesupport (>= 3.0.0)
-    faker (1.6.5)
-      i18n (~> 0.5)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.14)
@@ -199,8 +195,6 @@ DEPENDENCIES
   cancancan
   cocoon
   coffee-rails (~> 4.1.0)
-  factory_girl
-  faker
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

@@ -36,11 +36,11 @@ gem 'simple_form'
 gem 'cocoon'
 gem 'cancancan'
 
+# used for populating staging sites
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'factory_girl'
-  gem 'faker'
 end
 
 group :development do
