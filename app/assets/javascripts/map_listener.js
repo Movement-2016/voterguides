@@ -1,5 +1,8 @@
 $(document).on('turbolinks:load', function() {
-  $('#searchable_map').usmap({
+  var map = $('#searchable_map');
+  var map_height = map.width() * 2 / 3;
+  map.css('height', map_height);
+  map.usmap({
     // The styles for the state
     'stateStyles': {
       fill: "#D4867F",
