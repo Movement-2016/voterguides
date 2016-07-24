@@ -6,6 +6,7 @@
 <h3>Endorsements</h3>
 <div id="endorsement_list" class="panel-group" role="tablist" aria-multiselectable="true">
   <%= simple_form_for @voter_guide do |f| %>
+    <%= f.hidden_field :id %>
     <%= f.simple_fields_for :endorsements do |endorsement| %>
       <%= render 'endorsements/detail', endorsement: endorsement.object, endorsement_form: endorsement %>
     <% end %>
