@@ -2,7 +2,7 @@ class VoterGuide < ApplicationRecord
 
   STATES = %w[ AL AK AR AZ CA CO CT DC DE FL GA HI IA ID IL IN KS KY LA MA MD ME MI MN MO MT MS NC ND NE NH NJ NM NV NY OH OK OR PA RI SC SD TN TX UT VA VT WA WI WV WY]
   belongs_to :author, class_name: "User"
-  has_many :endorsements, dependent: :destroy
+  has_many :endorsements, -> { order(:guide_order) }, dependent: :destroy
 
   validates :name, presence: true,
             uniqueness: {

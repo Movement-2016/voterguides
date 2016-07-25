@@ -1,0 +1,17 @@
+<div class="panel endorsement_list_item">
+  <div class="panel-heading" role="tab" id="endorsement--heading-<%= endorsement.to_param %>">
+    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#endorsement_list" href="#collapse-endorsement-<%= endorsement.to_param %>" aria-expanded="false" aria-controls="collapse-endorsement-<%= endorsement.to_param %>">
+      <% if endorsement.highlight %>
+        <span class="glyphicon glyphicon-star"></span>
+      <% end %>
+
+      <%= endorsement.summary_text %>
+    </a>
+  </div>
+  <div id="collapse-endorsement-<%= endorsement.to_param %>"  class="panel-collapse collapse in" role="tabpanel" aria-labelledby="endorsement--heading-<%= endorsement.to_param %>">
+    <div class="panel-body">
+      <%= endorsement_form.hidden_field :id %>
+      <%= render 'endorsements/form', f: endorsement_form %>
+    </div>
+  </div>
+</div>

@@ -33,7 +33,7 @@ class VoterGuidesController < ApplicationController
     if @voter_guide.update(voter_guide_params)
       redirect_to edit_voter_guide_path(@voter_guide)
     else
-      render :show
+      render :edit
     end
   end
 

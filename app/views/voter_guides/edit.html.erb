@@ -2,13 +2,24 @@
 <div><%= link_to "View Guide", voter_guide_path %></div>
 <div><%= @voter_guide.target_city %>, <%= @voter_guide.target_state %></div>
 <div>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></div>
-
-<h3>Endorsements</h3>
 <%= simple_form_for @voter_guide do |f| %>
+
+  <%= link_to "Edit", "#voter_guide_core_fields", data: {toggle: "collapse"}, aria: {controls: "voter_guide_core_fields", expanded: false} %>
+  <div class="collapse"  id="voter_guide_core_fields">
+    <div class="well">
+      <%= render 'voter_guides/form', form: f %>
+      <%= f.button :submit, "Update" %>
+    </div>
+  </div>
+
+  <h3>Endorsements</h3>
   <div id="endorsement_list" class="panel-group" role="tablist" aria-multiselectable="true">
-    <%= f.hidden_field :id %>
-    <%= f.simple_fields_for :endorsements, f.object.endorsements.rank(:guide_order) do |endorsement| %>
-      <%= render 'endorsements/edit_detail', endorsement: endorsement.object, endorsement_form: endorsement %>
+    <%= f.simple_fields_for :endorsements do |endorsement| %>
+      <% if endorsement.object.new_record? %>
+        <%= render 'endorsements/edit_detail_with_errors', endorsement: endorsement.object, endorsement_form: endorsement %>
+      <% else %>
+        <%= render 'endorsements/edit_detail', endorsement: endorsement.object, endorsement_form: endorsement %>
+      <% end %>
     <% end %>
   </div>
   <div id="endorsements">

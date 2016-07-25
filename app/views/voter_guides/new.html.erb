@@ -1,10 +1,6 @@
 <h2>Create your voter guide</h2>
 
 <%= simple_form_for @voter_guide do |f| %>
-  <%= f.error :base, :error_method => :to_sentence %>
-  <%= f.input :name, label: "Guide Title"  %>
-  <%= f.input :target_city, label: "Guide City", placeholder: "Indianapolis" %>
-  <%= f.input :target_state, label: "Guide State", collection: VoterGuide::STATES, include_blank: "Select State" %>
-  <%= f.input :election_date, as: :datepicker %>
+  <%= render 'form', form: f %>
   <%= f.button :submit, "Ready" %>
 <% end %>
