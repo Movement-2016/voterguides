@@ -4,18 +4,18 @@
 <div>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></div>
 
 <h3>Endorsements</h3>
-<div id="endorsement_list" class="panel-group" role="tablist" aria-multiselectable="true">
-  <%= simple_form_for @voter_guide do |f| %>
+<%= simple_form_for @voter_guide do |f| %>
+  <div id="endorsement_list" class="panel-group" role="tablist" aria-multiselectable="true">
     <%= f.hidden_field :id %>
-    <%= f.simple_fields_for :endorsements do |endorsement| %>
-      <%= render 'endorsements/detail', endorsement: endorsement.object, endorsement_form: endorsement %>
+    <%= f.simple_fields_for :endorsements, f.object.endorsements.rank(:guide_order) do |endorsement| %>
+      <%= render 'endorsements/edit_detail', endorsement: endorsement.object, endorsement_form: endorsement %>
     <% end %>
-    <div id="endorsements">
-      <div class="endorsements--links">
-        <%= link_to_add_association 'add endorsement', f, :endorsements, partial: 'endorsements/form' %>
-      </div>
+  </div>
+  <div id="endorsements">
+    <div class="endorsements--links">
+      <%= link_to_add_association 'add endorsement', f, :endorsements, partial: 'endorsements/form' %>
     </div>
-    <%= f.button :submit, "Update" %>
-  <% end %>
-</div>
+  </div>
+  <%= f.button :submit, "Update" %>
+<% end %>
 

@@ -18,4 +18,7 @@
 //= require us-map-1.0.1/lib/raphael
 //= require us-map-1.0.1/example/color.jquery
 //= require us-map-1.0.1/jquery.usmap
+//= require sortable
+
 //= require map_listener
+//= require sortable_endorsements

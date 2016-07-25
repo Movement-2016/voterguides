@@ -3,7 +3,7 @@
   <%= f.input :candidate_name, label: 'Endorsed Candidate', placeholder: "Sandra Day O'Connor" %>
   <%= f.input :jurisdiction, placeholder: 'District 21',
               hint: '<small>e.g. Yuba County, Transport District 6, Baltimore Ward 4, City of Springfield, State of AL, US</small>'.html_safe %>
-  <%= f.input :explanation, html: { rows: 6 }, label: 'Why this Candidate?', placeholder: 'I did five minutes of research and here\'s what I discovered' %>
+  <%= f.input :explanation, input_html: {rows: 10}, label: 'Why this Candidate?', placeholder: 'I did five minutes of research and here\'s what I discovered' %>
   <%= f.input :highlight, label: 'Highlight this Endorsement in Guide Description' %>
   <%= link_to_remove_association "remove endorsement", f %>
 </div>

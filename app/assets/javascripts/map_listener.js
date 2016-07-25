@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+function load_map_listener() {
   var map = $('#searchable_map');
   var map_height = map.width() * 2 / 3;
   map.css('height', map_height);
@@ -13,9 +13,9 @@ $(document).on('turbolinks:load', function() {
       fill: "#79A6D2",
     },
 
-    'click' : function(event, data) {
+    'click': function(event, data) {
       location = '/voter_guides?search_state=' + data.name;
     }
 
   });
-});
+}

@@ -1,0 +1,18 @@
+.main-content--landing {
+  text-align: center;
+}
+
+.searchable_map_container {
+  text-align: center;
+}
+
+#searchable_map {
+  width: 80%;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  #searchable_map {
+    height: 200px;
+  }
+}
