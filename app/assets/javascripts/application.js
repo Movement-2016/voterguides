@@ -21,4 +21,4 @@
 //= require sortable
 
 //= require map_listener
-//= require sortable_endorsements
+//= require endorsements

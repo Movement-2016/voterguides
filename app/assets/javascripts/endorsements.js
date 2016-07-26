@@ -22,3 +22,11 @@ function sortable_endorsements(selector) {
     }
   });
 }
+
+function display_endorsements(selector) {
+  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  var endorsements = $(".panel-collapse", selector);
+  if (w > 768 && endorsements.length > 0) {
+    endorsements.addClass('in');
+  }
+}
