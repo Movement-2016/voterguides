@@ -1,12 +1,11 @@
 class VoterGuidesController < ApplicationController
   before_filter :require_login, except: [:show, :index]
+  load_and_authorize_resource
 
   def new
-    @voter_guide = VoterGuide.new
   end
 
   def create
-    @voter_guide = VoterGuide.new(voter_guide_params)
     if @voter_guide.save
       redirect_to edit_voter_guide_path(@voter_guide)
     else
@@ -15,7 +14,6 @@ class VoterGuidesController < ApplicationController
   end
 
   def show
-    @voter_guide = VoterGuide.find(params[:id])
   end
 
   def index
@@ -25,11 +23,9 @@ class VoterGuidesController < ApplicationController
   end
 
   def edit
-    @voter_guide = VoterGuide.find(params[:id])
   end
 
   def update
-    @voter_guide = VoterGuide.find(params[:id])
     if @voter_guide.update(voter_guide_params)
       redirect_to edit_voter_guide_path(@voter_guide)
     else

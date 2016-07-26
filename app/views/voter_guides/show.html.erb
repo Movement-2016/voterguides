@@ -1,6 +1,9 @@
 <h2><%= @voter_guide.name %></h2>
 <div><%= @voter_guide.target_city %>, <%= @voter_guide.target_state %></div>
 <div>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></div>
+<% if can? :edit, @voter_guide %>
+  <%= link_to edit_voter_guide_path(@voter_guide) %>
+<% end %>
 
 <h3>Endorsements</h3>
 <div id="endorsement_list" class="panel-group" role="tablist" aria-multiselectable="true">
