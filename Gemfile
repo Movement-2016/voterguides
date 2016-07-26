@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'cocoon'
 gem 'cancancan'
 gem 'ranked-model'
+gem 'carmen'
 
 # used for populating sample voter guides
 gem 'factory_girl'

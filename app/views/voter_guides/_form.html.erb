@@ -1,5 +1,5 @@
 <%= form.error :base, :error_method => :to_sentence %>
 <%= form.input :name, label: "Guide Title"  %>
 <%= form.input :target_city, label: "Guide City", placeholder: "Indianapolis" %>
-<%= form.input :target_state, label: "Guide State", collection: VoterGuide::STATES, include_blank: "Select State" %>
+<%= form.input :target_state, label: "Guide State", collection: GeographyPresenter::ELIGIBLE_STATES, include_blank: "Select State" %>
 <%= form.input :election_date, as: :datepicker %>
