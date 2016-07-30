@@ -5,7 +5,8 @@
 <%= simple_form_for @voter_guide do |f| %>
 
   <%= link_to "Edit", "#voter_guide_core_fields", data: {toggle: "collapse"}, aria: {controls: "voter_guide_core_fields", expanded: false} %>
-  <div class="collapse"  id="voter_guide_core_fields">
+
+  <div class="collapse <%= "in" if @voter_guide.errors.any? %>"  id="voter_guide_core_fields">
     <div class="well">
       <%= render 'voter_guides/form', form: f %>
       <%= f.button :submit, "Update" %>

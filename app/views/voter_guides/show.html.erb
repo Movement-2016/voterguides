@@ -2,7 +2,7 @@
 <div><%= @voter_guide.target_city %>, <%= @voter_guide.target_state %></div>
 <div>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></div>
 <% if can? :edit, @voter_guide %>
-  <%= link_to edit_voter_guide_path(@voter_guide) %>
+  <%= link_to "Edit", edit_voter_guide_path(@voter_guide) %>
 <% end %>
 
 <h3>Endorsements</h3>
