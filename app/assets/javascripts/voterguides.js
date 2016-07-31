@@ -30,11 +30,11 @@ function init_jquery_file_uploader(selector) {
 
         // extract key and generate URL from response
         var key   = $(data.jqXHR.responseXML).find("Key").text();
-        var url   = 'https://' + postData['host'] + '/' + key;
-        $('#voter_guide_external_guide_url').val(url);
+        var url   = 'https://' + postData['host'] + '/' + encodeURI(key);
+        //$('#voter_guide_external_guide_url').val(url);
 
         // create hidden field
-        var input = $("<input />", { type:'text', name: fileInput.attr('name'), value: url })
+        var input = $("<input />", { type:'hidden', name: fileInput.attr('name'), value: url })
         form.append(input);
       },
       fail: function(e, data) {

@@ -13,6 +13,10 @@ class VoterGuidePresenter < SimpleDelegator
     model.external_guide_url.blank?
   end
 
+  def show_core_form?
+    model.errors.any? || !show_endorsements?
+  end
+
   def model
     __getobj__
   end

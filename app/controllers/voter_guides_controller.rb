@@ -1,11 +1,14 @@
 class VoterGuidesController < ApplicationController
   before_filter :require_login, :allow_guide_uploads, except: [:show, :index]
-  load_and_authorize_resource
+  before_filter :load_guide_presenter, except: [:new, :create, :index]
+  authorize_resource
 
   def new
+    @voter_guide = VoterGuide.new
   end
 
   def create
+    @voter_guide = VoterGuide.new(voter_guide_params.merge(author: current_user))
     if @voter_guide.save
       redirect_to edit_voter_guide_path(@voter_guide)
     else
@@ -47,6 +50,10 @@ class VoterGuidesController < ApplicationController
       key: "uploads/#{SecureRandom.uuid}/${filename}",
       success_action_status: '201',
       acl: 'public-read')
+  end
+
+  def load_guide_presenter
+    @voter_guide = VoterGuidePresenter.new(VoterGuide.find(params[:id]))
   end
 
 end

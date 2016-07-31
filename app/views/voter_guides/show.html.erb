@@ -2,13 +2,14 @@
 <div><%= @voter_guide.target_city %>, <%= @voter_guide.target_state %></div>
 <div>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></div>
 <% if can? :edit, @voter_guide %>
-  <%= link_to "Edit", edit_voter_guide_path(@voter_guide) %>
+  <%= link_to "Edit This Guide", edit_voter_guide_path(@voter_guide) %>
 <% end %>
 
-<h3>Endorsements</h3>
-<div id="endorsement_list" class="panel-group" role="tablist" aria-multiselectable="true">
-  <% @voter_guide.endorsements.each do |endorsement| %>
-    <%= render 'endorsements/detail', endorsement: endorsement, endorsement_form: nil %>
-  <% end %>
-</div>
-
+<% if @voter_guide.show_endorsements? %>
+  <h3>Endorsements</h3>
+  <div id="endorsement_list" class="panel-group" role="tablist" aria-multiselectable="true">
+    <% @voter_guide.endorsements.each do |endorsement| %>
+      <%= render 'endorsements/detail', endorsement: endorsement, endorsement_form: nil %>
+    <% end %>
+  </div>
+<% end %>
