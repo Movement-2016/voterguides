@@ -1,5 +1,5 @@
 class VoterGuidesController < ApplicationController
-  before_filter :require_login, except: [:show, :index]
+  before_filter :require_login, :allow_guide_uploads, except: [:show, :index]
   load_and_authorize_resource
 
   def new
@@ -37,8 +37,16 @@ class VoterGuidesController < ApplicationController
 
   def voter_guide_params
     params.require(:voter_guide).permit(
-      :name, :target_city, :target_state, :election_date,
+      :name, :target_city, :target_state, :election_date, :external_guide_url,
       endorsements_attributes:
         [:id, :jurisdiction, :office, :candidate_name, :explanation, :highlight, :_destroy])
   end
+
+  def allow_guide_uploads
+    @upload_guide_target = S3_BUCKET.presigned_post(
+      key: "uploads/#{SecureRandom.uuid}/${filename}",
+      success_action_status: '201',
+      acl: 'public-read')
+  end
+
 end

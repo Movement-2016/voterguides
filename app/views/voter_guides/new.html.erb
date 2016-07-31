@@ -1,6 +1,6 @@
 <h2>Create your voter guide</h2>
 
-<%= simple_form_for @voter_guide do |f| %>
+<%= simple_form_for @voter_guide, html: {multipart: true} do |f| %>
   <%= render 'form', form: f %>
   <%= f.button :submit, "Ready" %>
 <% end %>

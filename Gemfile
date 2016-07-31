@@ -37,6 +37,7 @@ gem 'cocoon'
 gem 'cancancan'
 gem 'ranked-model'
 gem 'carmen'
+gem 'aws-sdk'
 
 # used for populating sample voter guides
 gem 'factory_girl'

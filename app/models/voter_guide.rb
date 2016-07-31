@@ -9,6 +9,10 @@ class VoterGuide < ApplicationRecord
   validates :target_state, presence: true
   validates :target_city, presence: true
   validates :election_date, presence: true
+  validates :external_guide_url,
+            format: { with: /\A#{URI::regexp(['http', 'https'])}\z/,
+                      message: "must be a standard Web address",
+                      allow_blank: true }
 
   accepts_nested_attributes_for :endorsements, reject_if: :all_blank, allow_destroy: true
 

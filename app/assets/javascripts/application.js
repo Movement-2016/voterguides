@@ -19,6 +19,9 @@
 //= require us-map-1.0.1/example/color.jquery
 //= require us-map-1.0.1/jquery.usmap
 //= require sortable
+//= require jquery.ui.widget
+//= require z.jquery.fileupload
 
 //= require map_listener
 //= require endorsements
+//= require voterguides

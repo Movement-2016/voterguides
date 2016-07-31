@@ -4,15 +4,17 @@
   <p>No voter guides found for <%= params[:search_state] %></p>
 <% else %>
   <ul>
-    <% @voter_guides.each do |voter_guide| %>
+    <% @voter_guides.map {|vg| VoterGuidePresenter.new(vg) }.each do |voter_guide| %>
       <li>
-        <h4><%= link_to voter_guide.name, voter_guide_path(voter_guide) %></h4>
+        <h4><%= link_to voter_guide.name, voter_guide.show_url, data: {guide_id: voter_guide.to_param}, target: "#{'blank' if voter_guide.external_guide_url.present?}" %></h4>
         <div><%= voter_guide.target_city %>, <%= voter_guide.target_state %></div>
-        <p><%= voter_guide.endorsements.size %> endorsements</p>
-        <% voter_guide.endorsements.highlighted.each do |endorsement | %>
-          <%= render 'endorsement', endorsement: endorsement %>
+        <% if voter_guide.show_endorsements? %>
+          <p><%= voter_guide.endorsements.size %> endorsements</p>
+          <% voter_guide.endorsements.highlighted.each do |endorsement | %>
+            <%= render 'endorsement', endorsement: endorsement %>
+          <% end %>
+          <%= link_to "more", voter_guide.show_url %>
         <% end %>
-        <%= link_to "more", voter_guide_path(voter_guide) %>
       </li>
     <% end %>
   </ul>

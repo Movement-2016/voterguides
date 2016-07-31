@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726004514) do
+ActiveRecord::Schema.define(version: 20160728043936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,9 +44,10 @@ ActiveRecord::Schema.define(version: 20160726004514) do
     t.string   "target_city"
     t.string   "target_state"
     t.date     "election_date"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "author_id"
+    t.string   "external_guide_url"
     t.index ["author_id"], name: "index_voter_guides_on_author_id", using: :btree
   end
 

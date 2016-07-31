@@ -2,7 +2,7 @@
 <div><%= link_to "View Guide", voter_guide_path %></div>
 <div><%= @voter_guide.target_city %>, <%= @voter_guide.target_state %></div>
 <div>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></div>
-<%= simple_form_for @voter_guide do |f| %>
+<%= simple_form_for @voter_guide, html: {multipart: true} do |f| %>
 
   <%= link_to "Edit", "#voter_guide_core_fields", data: {toggle: "collapse"}, aria: {controls: "voter_guide_core_fields", expanded: false} %>
 
