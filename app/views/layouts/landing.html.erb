@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Voterguides</title>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'setup_page', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<div class="container">
+  <%= render "layouts/header" %>
+  <div class="row main-content">
+    <div class="col-xs-12">
+      <% if flash[:alert] %>
+        <div class="alert alert-warning" role="alert"><%= flash[:alert] %></div>
+      <% end %>
+    </div>
+    <%= yield %>
+  </div>
+</div>
+</body>
+</html>

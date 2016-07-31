@@ -1,0 +1,28 @@
+<header>
+  <nav class="navbar navbar-inverse theballot--navbar">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle theballot--navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to root_path, class: "navbar--logo" do %>
+          <%= image_tag "theme/logo.jpg" %>
+        <% end %>
+      </div>
+      <div class="collapse navbar-collapse theballot--navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li><%= link_to current_user.name, '#', class: 'user_nav--item' %></li>
+            <li><%= link_to "Log out", logout_path, class: 'user_nav--item' %></li>
+          <% else %>
+            <li><%= link_to "Log in", new_session_path, class: 'user_nav--item' %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
