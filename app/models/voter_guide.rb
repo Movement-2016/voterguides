@@ -18,4 +18,8 @@ class VoterGuide < ApplicationRecord
 
   scope :upcoming, -> { where("election_date >= ?", Date.today)}
   scope :by_state, ->(state) { where(target_state: state) }
+
+  def presenter
+    @presenter ||= VoterGuidePresenter.new(self)
+  end
 end

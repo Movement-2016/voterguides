@@ -1,7 +1,6 @@
 class VoterGuidesController < ApplicationController
-  before_filter :require_login, :allow_guide_uploads, except: [:show, :index]
-  before_filter :load_guide_presenter, except: [:new, :create, :index]
-  authorize_resource
+  before_action :require_login, :allow_guide_uploads, except: [:show, :index]
+  load_and_authorize_resource
 
   def new
     @voter_guide = VoterGuide.new
@@ -46,14 +45,10 @@ class VoterGuidesController < ApplicationController
   end
 
   def allow_guide_uploads
-    @upload_guide_target = S3_BUCKET.presigned_post(
+    @upload_guide_target ||= S3_BUCKET.presigned_post(
       key: "uploads/#{SecureRandom.uuid}/${filename}",
       success_action_status: '201',
       acl: 'public-read')
-  end
-
-  def load_guide_presenter
-    @voter_guide = VoterGuidePresenter.new(VoterGuide.find(params[:id]))
   end
 
 end

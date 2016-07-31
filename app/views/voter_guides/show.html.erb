@@ -5,7 +5,7 @@
   <div><%= link_to "Edit This Guide", edit_voter_guide_path(@voter_guide) %></div>
 <% end %>
 
-<% if @voter_guide.show_endorsements? %>
+<% if @voter_guide.presenter.show_endorsements? %>
   <h3>Endorsements</h3>
   <div id="endorsement_list" class="panel-group" role="tablist" aria-multiselectable="true">
     <% @voter_guide.endorsements.each do |endorsement| %>

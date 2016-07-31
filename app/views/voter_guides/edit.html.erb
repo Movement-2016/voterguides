@@ -2,18 +2,18 @@
 <div><%= link_to "View Guide", voter_guide_path %></div>
 <div><%= @voter_guide.target_city %>, <%= @voter_guide.target_state %></div>
 <div>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></div>
-<%= simple_form_for @voter_guide.model, html: {multipart: true} do |f| %>
+<%= simple_form_for @voter_guide, html: {multipart: true} do |f| %>
 
   <%= link_to "Edit Guide Fields", "#voter_guide_core_fields", data: {toggle: "collapse"}, aria: {controls: "voter_guide_core_fields", expanded: false} %>
 
-  <div class="collapse <%= "in" if @voter_guide.show_core_form? %>"  id="voter_guide_core_fields">
+  <div class="collapse <%= "in" if @voter_guide.presenter.show_core_form? %>"  id="voter_guide_core_fields">
     <div class="well">
       <%= render 'voter_guides/form', form: f %>
       <%= f.button :submit, "Update" %>
     </div>
   </div>
 
-  <% if @voter_guide.show_endorsements? %>
+  <% if @voter_guide.presenter.show_endorsements? %>
     <h3>Endorsements</h3>
     <div id="endorsement_list" class="panel-group" role="tablist" aria-multiselectable="true">
       <%= f.simple_fields_for :endorsements do |endorsement| %>
