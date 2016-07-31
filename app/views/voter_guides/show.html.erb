@@ -2,7 +2,7 @@
 <div><%= @voter_guide.target_city %>, <%= @voter_guide.target_state %></div>
 <div>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></div>
 <% if can? :edit, @voter_guide %>
-  <%= link_to "Edit This Guide", edit_voter_guide_path(@voter_guide) %>
+  <div><%= link_to "Edit This Guide", edit_voter_guide_path(@voter_guide) %></div>
 <% end %>
 
 <% if @voter_guide.show_endorsements? %>
@@ -12,4 +12,6 @@
       <%= render 'endorsements/detail', endorsement: endorsement, endorsement_form: nil %>
     <% end %>
   </div>
+<% else %>
+  <p><%= link_to "Go to the Guide", @voter_guide.external_guide_url, target: :blank %></p>
 <% end %>
