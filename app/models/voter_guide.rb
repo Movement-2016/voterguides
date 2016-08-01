@@ -18,8 +18,13 @@ class VoterGuide < ApplicationRecord
 
   scope :upcoming, -> { where("election_date >= ?", Date.today)}
   scope :by_state, ->(state) { where(target_state: state) }
+  scope :published, -> { where.not(published_at: nil) }
 
   def presenter
     @presenter ||= VoterGuidePresenter.new(self)
+  end
+
+  def published?
+    published_at?
   end
 end

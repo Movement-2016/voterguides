@@ -1,5 +1,6 @@
 class VoterGuidesController < ApplicationController
-  before_action :require_login, :allow_guide_uploads, except: [:show, :index]
+  before_action :require_login, except: [:show, :index]
+  before_action :allow_guide_uploads, except: [:show, :publish, :index]
   load_and_authorize_resource
 
   def new
@@ -19,7 +20,7 @@ class VoterGuidesController < ApplicationController
   end
 
   def index
-    search = VoterGuide.upcoming
+    search = VoterGuide.upcoming.published
     search = search.by_state(params[:search_state]) if params[:search_state]
     @voter_guides = search
   end
@@ -33,6 +34,11 @@ class VoterGuidesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def publish
+    @voter_guide.touch :published_at
+    redirect_to edit_voter_guide_path(@voter_guide)
   end
 
   protected

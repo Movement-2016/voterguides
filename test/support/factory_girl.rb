@@ -15,6 +15,10 @@ FactoryGirl.define do
     name { "Juan Doe #{generate(:current_order)}" }
     email { "doe#{generate(:current_order)}@example.com" }
     auth_hash { { uid: SecureRandom.hex(10), info: {}}}
+
+    factory :author do
+      email { "author#{generate(:current_order)}@example.com" }
+    end
   end
 
   factory :voter_guide do
@@ -29,6 +33,10 @@ FactoryGirl.define do
         create_list :endorsement, rand(7)+3, voter_guide: guide
       end
     end
+
+    trait :with_author do
+      author
+    end
   end
 
   factory :endorsement do
@@ -38,6 +46,7 @@ FactoryGirl.define do
     explanation { Faker::Lorem.paragraphs(rand(3) + 1).join("\n\n")}
     highlight { rand(5) == 0 }
     candidate_name { Faker::Name.name }
+    guide_order { rand(10000) }
   end
 end
 

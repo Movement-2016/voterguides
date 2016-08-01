@@ -1,6 +1,10 @@
 require 'delegate'
 
 class VoterGuidePresenter < SimpleDelegator
+  def publish_date
+    model.published_at.strftime("%B %e, %Y")
+  end
+
   def show_url
     if model.external_guide_url.present?
       model.external_guide_url

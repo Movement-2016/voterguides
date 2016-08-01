@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create]
 
-  resources :voter_guides
+  resources :voter_guides do
+    member do
+      patch :publish
+    end
+  end
+
   resources :endorsements, only: :update
 end

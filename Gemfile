@@ -57,6 +57,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :test do
+  gem 'minitest-spec-rails'
+end
+
 gem 'rails_12factor', group: :production
 
 ruby "2.3.1"

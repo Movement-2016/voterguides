@@ -2,6 +2,16 @@
 <div><%= link_to "View Guide", voter_guide_path %></div>
 <div><%= @voter_guide.target_city %>, <%= @voter_guide.target_state %></div>
 <div>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></div>
+<div>
+  <% if @voter_guide.published? %>
+    Published on <%= @voter_guide.presenter.publish_date %>
+  <% else %>
+    DRAFT GUIDE
+    <% if can? :publish, @voter_guide %>
+      <%= link_to "Publish Now", publish_voter_guide_path(@voter_guide), class: "btn btn-info", method: :patch %>
+    <% end %>
+  <% end %>
+</div>
 <%= simple_form_for @voter_guide, html: {multipart: true} do |f| %>
 
   <%= link_to "Edit Guide Fields", "#voter_guide_core_fields", data: {toggle: "collapse"}, aria: {controls: "voter_guide_core_fields", expanded: false} %>
@@ -9,7 +19,7 @@
   <div class="collapse <%= "in" if @voter_guide.presenter.show_core_form? %>"  id="voter_guide_core_fields">
     <div class="well">
       <%= render 'voter_guides/form', form: f %>
-      <%= f.button :submit, "Update" %>
+      <%= f.button :submit, "Update", class: "btn btn-primary"  %>
     </div>
   </div>
 
@@ -29,7 +39,7 @@
         <%= link_to_add_association 'add endorsement', f, :endorsements, partial: 'endorsements/form' %>
       </div>
     </div>
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update", class: "btn btn-primary"  %>
   <% else %>
     <p>Endorsements are disabled because this guide references a file or external link.</p>
   <% end %>
