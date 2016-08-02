@@ -14,5 +14,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :accounts, only: :show
+  resources :email_confirmations, only: [:new, :create, :show]
+
   resources :endorsements, only: :update
 end

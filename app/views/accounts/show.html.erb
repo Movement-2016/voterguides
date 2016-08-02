@@ -1,0 +1,8 @@
+<h2><%= @account.name %></h2>
+<ul>
+  <% @account.authored_voter_guides.order(created_at: :desc).each do |vg| %>
+    <li>
+      <%= render 'voter_guides/core_info', voter_guide: vg %>
+    </li>
+  <% end %>
+</ul>

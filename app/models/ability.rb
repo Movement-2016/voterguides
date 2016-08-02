@@ -9,6 +9,7 @@ class Ability
       return can :manage, :all
     end
 
+    can :read, User, id: user.id
     can :manage, VoterGuide, author_id: user.id
     can :manage, Endorsement, voter_guide: {author_id: user.id}
 

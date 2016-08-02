@@ -38,6 +38,7 @@ gem 'cancancan'
 gem 'ranked-model'
 gem 'carmen'
 gem 'aws-sdk'
+gem 'aws-sdk-rails'
 
 # used for populating sample voter guides
 gem 'factory_girl'
@@ -59,6 +60,7 @@ end
 
 group :test do
   gem 'minitest-spec-rails'
+  gem 'rails-controller-testing'
 end
 
 gem 'rails_12factor', group: :production

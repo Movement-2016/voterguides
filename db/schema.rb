@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801000255) do
+ActiveRecord::Schema.define(version: 20160801011616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "email_confirmations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "confirmation_code"
+    t.string   "email"
+    t.datetime "confirmed_at"
+    t.index ["confirmation_code"], name: "index_email_confirmations_on_confirmation_code", unique: true, using: :btree
+    t.index ["user_id", "email"], name: "index_email_confirmations_on_user_id_and_email", using: :btree
+    t.index ["user_id"], name: "index_email_confirmations_on_user_id", using: :btree
+  end
 
   create_table "endorsements", force: :cascade do |t|
     t.string   "office"
@@ -52,6 +62,7 @@ ActiveRecord::Schema.define(version: 20160801000255) do
     t.index ["author_id"], name: "index_voter_guides_on_author_id", using: :btree
   end
 
+  add_foreign_key "email_confirmations", "users"
   add_foreign_key "endorsements", "voter_guides"
   add_foreign_key "voter_guides", "users", column: "author_id"
 end

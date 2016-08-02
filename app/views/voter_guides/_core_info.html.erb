@@ -1,0 +1,14 @@
+<h2><%= voter_guide.name %></h2>
+<div><%= link_to "View Guide", voter_guide.presenter.show_url %></div>
+<div><%= voter_guide.target_city %>, <%= voter_guide.target_state %></div>
+<div>Election: <%= voter_guide.election_date.strftime('%B %d, %Y') %></div>
+<div>
+  <% if voter_guide.published? %>
+    Published on <%= voter_guide.presenter.publish_date %>
+  <% else %>
+    DRAFT GUIDE
+    <% if can? :publish, voter_guide %>
+      <%= link_to "Publish Now", publish_voter_guide_path(voter_guide), class: "btn btn-info", method: :patch %>
+    <% end %>
+  <% end %>
+</div>

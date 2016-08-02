@@ -37,8 +37,15 @@ class VoterGuidesController < ApplicationController
   end
 
   def publish
-    @voter_guide.touch :published_at
-    redirect_to edit_voter_guide_path(@voter_guide)
+    if current_user.email_confirmed?
+      @voter_guide.touch :published_at
+      flash[:notice] = "Guide has been published"
+      redirect_to edit_voter_guide_path(@voter_guide)
+    else
+      confirmation = EmailConfirmation.create! user: current_user
+      EmailConfirmationMailer.confirmation_code(confirmation.id).deliver_now
+      redirect_to new_email_confirmation_path
+    end
   end
 
   protected

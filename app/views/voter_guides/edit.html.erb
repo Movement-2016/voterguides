@@ -1,17 +1,4 @@
-<h2><%= @voter_guide.name %></h2>
-<div><%= link_to "View Guide", voter_guide_path %></div>
-<div><%= @voter_guide.target_city %>, <%= @voter_guide.target_state %></div>
-<div>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></div>
-<div>
-  <% if @voter_guide.published? %>
-    Published on <%= @voter_guide.presenter.publish_date %>
-  <% else %>
-    DRAFT GUIDE
-    <% if can? :publish, @voter_guide %>
-      <%= link_to "Publish Now", publish_voter_guide_path(@voter_guide), class: "btn btn-info", method: :patch %>
-    <% end %>
-  <% end %>
-</div>
+<%= render 'core_info', voter_guide: @voter_guide %>
 <%= simple_form_for @voter_guide, html: {multipart: true} do |f| %>
 
   <%= link_to "Edit Guide Fields", "#voter_guide_core_fields", data: {toggle: "collapse"}, aria: {controls: "voter_guide_core_fields", expanded: false} %>

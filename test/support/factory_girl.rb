@@ -48,6 +48,15 @@ FactoryGirl.define do
     candidate_name { Faker::Name.name }
     guide_order { rand(10000) }
   end
+
+  factory :email_confirmation do
+    user
+    email { user.email }
+
+    trait :confirmed do
+      confirmed_at { 1.week.ago }
+    end
+  end
 end
 
 class FakeVoterGuide

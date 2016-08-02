@@ -1,0 +1,8 @@
+Welcome to <%= SITE_NAME %>, <%= @confirmation.user.name %>
+
+To confirm your email address, click here:
+<%= link_to email_confirmation_url(@confirmation), email_confirmation_url(@confirmation) %>
+
+Once you have confirmed your address, you'll be able to publish your voter guide.
+
+If you did not request this confirmation, no action is necessary.
