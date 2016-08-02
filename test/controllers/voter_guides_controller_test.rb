@@ -19,6 +19,7 @@ describe VoterGuidesController do
 
     describe "when the owner is logged in but not confirmed" do
       before do
+        skip('waiting for email confirmation flag to be removed')
         session[:current_user_id] = voter_guide.author_id
       end
 
