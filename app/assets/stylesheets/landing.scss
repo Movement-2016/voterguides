@@ -7,7 +7,6 @@
 }
 
 #searchable_map {
-  width: 80%;
   margin: 0 auto;
 }
 
@@ -15,4 +14,18 @@
   #searchable_map {
     height: 200px;
   }
+
+  #create_guide_section {
+    display: flex;
+    flex-flow: column;
+  }
+
+  #create_guide_cta {
+    order: 1;
+  }
+
+  #create_guide_howto {
+    order: 2;
+  }
+
 }

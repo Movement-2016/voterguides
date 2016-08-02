@@ -6,24 +6,28 @@
       Your vote is powerful. But these ballots can be confusing! That's where a voter guide can help out. Find a voter guide for your area, or create your own guide that other people can use. It's easy.
     </p>
   </div>
-  <div class="col-md-7">
+  <div class="col-md-1"></div>
+  <div class="col-md-5">
     <h2>Find Local Guides</h2>
     <p>Click the map to jump to guides in each state</p>
     <div class="searchable_map_container">
       <div id="searchable_map"></div>
     </div>
   </div>
-  <div class="col-md-1"></div>
-  <div class="col-md-3">
+  <div class="col-md-5" >
 
     <h2>Make a Voter Guide</h2>
-    <p>&nbsp;</p>
-    <div class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_ecN8yT_9kQ"></iframe>
+    <div id="create_guide_section">
+      <div id="create_guide_howto">
+        <p>&nbsp;</p>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_ecN8yT_9kQ"></iframe>
+        </div>
+        <p>&nbsp;</p>
+      </div>
+      <div id="crate_guide_cta">
+        <%= link_to "Create Guide", new_voter_guide_path, class: 'btn btn-success' %>
+      </div>
     </div>
-    <p>&nbsp;</p>
-    <p>
-      <%= link_to "Create Guide", new_voter_guide_path, class: 'btn btn-success' %>
-    </p>
   </div>
 </div>
