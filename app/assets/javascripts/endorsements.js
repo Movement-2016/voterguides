@@ -29,4 +29,5 @@ function display_endorsements(selector) {
   if (w > 768 && endorsements.length > 0) {
     endorsements.addClass('in');
   }
+  $('input[type=checkbox][data-toggle^=vg_toggle]').bootstrapToggle();
 }

@@ -54,7 +54,9 @@ class VoterGuidesController < ApplicationController
     params.require(:voter_guide).permit(
       :name, :target_city, :target_state, :election_date, :external_guide_url,
       endorsements_attributes:
-        [:id, :jurisdiction, :office, :candidate_name, :explanation, :highlight, :_destroy])
+        [:id, :_destroy,
+         :initiative, :recommendation,
+         :jurisdiction, :office, :candidate_name, :explanation, :highlight])
   end
 
   def allow_guide_uploads

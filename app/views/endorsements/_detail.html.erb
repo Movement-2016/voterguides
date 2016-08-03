@@ -4,7 +4,7 @@
       <% if endorsement.highlight %>
         <span class="glyphicon glyphicon-star"></span>
       <% end %>
-      <%= endorsement.summary_text %>
+      <%= endorsement.presenter.summary_text %>
     </a>
   </div>
   <div id="collapse-endorsement-<%= endorsement.to_param %>"  class="panel-collapse collapse" role="tabpanel" aria-labelledby="endorsement--heading-<%= endorsement.to_param %>">

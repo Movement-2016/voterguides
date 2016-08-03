@@ -21,6 +21,7 @@
 //= require sortable
 //= require jquery.ui.widget
 //= require z.jquery.fileupload
+//= require bootstrap-toggle
 
 //= require map_listener
 //= require endorsements

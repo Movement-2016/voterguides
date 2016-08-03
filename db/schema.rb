@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801011616) do
+ActiveRecord::Schema.define(version: 20160802200349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20160801011616) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "guide_order",    null: false
+    t.string   "initiative"
+    t.boolean  "recommendation"
     t.index ["voter_guide_id"], name: "index_endorsements_on_voter_guide_id", using: :btree
   end
 

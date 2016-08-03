@@ -1,6 +1,6 @@
 <div class="nested-fields well">
-  <%= f.input :office, placeholder: 'Superior Court Justice' %>
-  <%= f.input :candidate_name, label: 'Endorsed Candidate', placeholder: "Sandra Day O'Connor" %>
+  <%= f.input :office, placeholder: 'Superior Court Justice', required: true %>
+  <%= f.input :candidate_name, label: 'Endorsed Candidate', placeholder: "Sandra Day O'Connor", required: true %>
   <%= f.input :jurisdiction, placeholder: 'District 21',
               hint: '<small>e.g. Yuba County, Transport District 6, Baltimore Ward 4, City of Springfield, State of AL, US</small>'.html_safe %>
   <%= f.input :explanation, input_html: {rows: 10}, label: 'Why this Candidate?', placeholder: 'I did five minutes of research and here\'s what I discovered' %>

@@ -23,10 +23,14 @@
     </div>
     <div id="endorsements">
       <div class="endorsements--links">
-        <%= link_to_add_association 'add endorsement', f, :endorsements, partial: 'endorsements/form' %>
+        <%= link_to_add_association 'Endorse Another Candidate', f, :endorsements, partial: 'endorsements/form', class: "btn btn-success" %>
+        <%= link_to_add_association 'Add a Ballot Initiative', f, :endorsements, partial: 'endorsements/initiative_form', class: "btn btn-success" %>
       </div>
     </div>
-    <%= f.button :submit, "Update", class: "btn btn-primary"  %>
+    <p>&nbsp;</p>
+    <p>
+      <%= f.button :submit, "Save this Guide", class: "btn btn-primary"  %>
+    </p>
   <% else %>
     <p>Endorsements are disabled because this guide references a file or external link.</p>
   <% end %>
