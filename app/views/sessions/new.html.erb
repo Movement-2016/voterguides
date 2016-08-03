@@ -1,4 +1,4 @@
-<h1>Welcome to the Ballot</h1>
+<h1>Welcome to <%= SITE_NAME %></h1>
 <p>To create or endorse a voter guide, you'll need to log in</p>
 <% if ENV['FACEBOOK_KEY'] %>
   <p><%= link_to "Sign In with Facebook", '/auth/facebook', class: 'btn btn-success' %></p>

@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  force_ssl if: :ssl_configured?
+
   protect_from_forgery with: :exception
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
@@ -19,5 +21,9 @@ class ApplicationController < ActionController::Base
     return if current_user
     session[:redirect_to] = request.path
     redirect_to new_session_path
+  end
+
+  def ssl_configured?
+    Rails.env.production?
   end
 end

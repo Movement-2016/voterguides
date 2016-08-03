@@ -1,2 +1,2 @@
-FROM_ADDRESS = ENV['FROM_ADDRESS'] || 'guides@downballot.net'
-SITE_NAME = ENV['SITE_NAME'] || 'DownBallot.net'
+FROM_ADDRESS = ENV['FROM_ADDRESS'] || 'guides@localballot.us'
+SITE_NAME = ENV['SITE_NAME'] || 'LocalBallot.us'

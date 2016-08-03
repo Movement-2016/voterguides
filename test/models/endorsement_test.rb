@@ -12,7 +12,6 @@ describe Endorsement do
     let(:endorsement) { guide.endorsements.build(office: "Mayor") }
     it "is not valid" do
       expect(endorsement).wont_be :valid?
-      p endorsement.errors.full_messages.join
     end
   end
 
