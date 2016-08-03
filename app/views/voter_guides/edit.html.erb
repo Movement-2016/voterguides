@@ -24,8 +24,12 @@
     </div>
     <div id="endorsements">
       <div class="endorsements--links">
-        <%= link_to_add_association 'Endorse Another Candidate', f, :endorsements, partial: 'endorsements/form', class: "btn btn-success" %>
-        <%= link_to_add_association 'Add a Ballot Initiative', f, :endorsements, partial: 'endorsements/initiative_form', class: "btn btn-success" %>
+        <p>
+          <%= link_to_add_association 'Endorse Another Candidate', f, :endorsements, partial: 'endorsements/form', class: "btn btn-success" %>
+        </p>
+        <p>
+          <%= link_to_add_association 'Add a Ballot Initiative', f, :endorsements, partial: 'endorsements/initiative_form', class: "btn btn-success" %>
+        </p>
       </div>
     </div>
     <p>&nbsp;</p>
