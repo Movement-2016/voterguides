@@ -7,6 +7,7 @@
 
 <% if @voter_guide.presenter.show_endorsements? %>
   <h3>Endorsements</h3>
+  <%= render 'endorsements/toggle' %>
   <div id="endorsement_list" class="panel-group" role="tablist" aria-multiselectable="true">
     <% @voter_guide.endorsements.each do |endorsement| %>
       <%= render 'endorsements/detail', endorsement: endorsement, endorsement_form: nil %>

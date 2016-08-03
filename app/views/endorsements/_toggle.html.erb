@@ -1,0 +1,5 @@
+<% if @voter_guide.endorsements.any? %>
+  <p>
+    <%= link_to "open all", "#", id: "toggle_all_endorsements", data: { state: 'closed', open: 'close all', closed: 'open all'} %>
+  </p>
+<% end %>
