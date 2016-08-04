@@ -4,6 +4,7 @@ class EmailConfirmation < ActiveRecord::Base
   validates :user_id, presence: true
   validates :email, presence: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
   validates :confirmation_code, presence: true
+  validate :email_not_unsubscribed
 
   before_validation :generate_confirmation_code, :ensure_email, on: :create
 
@@ -13,6 +14,12 @@ class EmailConfirmation < ActiveRecord::Base
 
   def generate_confirmation_code
     self.confirmation_code ||= SecureRandom.hex(16)
+  end
+
+  def email_not_unsubscribed
+    if UnsubscribeOption.requested.where(email: email).any?
+      errors[:email] << "has been unsubscribed"
+    end
   end
 
   def to_param

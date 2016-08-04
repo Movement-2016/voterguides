@@ -7,6 +7,8 @@ class UnsubscribeOption < ApplicationRecord
 
   before_validation :generate_code, :ensure_email, on: :create
 
+  scope :requested, -> { where.not(requested_at: nil) }
+
   def self.verify_or_create_for_user(user)
     existing = UnsubscribeOption.where(user: user, email: user.email).first
     existing || UnsubscribeOption.create!(user: user)
