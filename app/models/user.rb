@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   has_many :authored_voter_guides, class_name: 'VoterGuide', foreign_key: 'author_id'
   has_many :email_confirmations, dependent: :destroy
+  has_many :unsubscribe_options, dependent: :destroy
 
   class << self
     def find_or_create_from_auth_hash!(auth_hash)

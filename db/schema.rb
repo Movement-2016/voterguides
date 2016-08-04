@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802200349) do
+ActiveRecord::Schema.define(version: 20160803213325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,18 @@ ActiveRecord::Schema.define(version: 20160802200349) do
     t.index ["voter_guide_id"], name: "index_endorsements_on_voter_guide_id", using: :btree
   end
 
+  create_table "unsubscribe_options", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "email"
+    t.string   "code"
+    t.datetime "requested_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["code"], name: "index_unsubscribe_options_on_code", using: :btree
+    t.index ["email"], name: "index_unsubscribe_options_on_email", using: :btree
+    t.index ["user_id"], name: "index_unsubscribe_options_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.json     "auth_hash"
     t.string   "email"
@@ -66,5 +78,6 @@ ActiveRecord::Schema.define(version: 20160802200349) do
 
   add_foreign_key "email_confirmations", "users"
   add_foreign_key "endorsements", "voter_guides"
+  add_foreign_key "unsubscribe_options", "users"
   add_foreign_key "voter_guides", "users", column: "author_id"
 end

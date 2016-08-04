@@ -3,7 +3,7 @@ require 'test_helper'
 describe VoterGuidesController do
   let(:voter_guide) { create(:voter_guide, :with_author) }
   describe "#publish" do
-    def action
+    subject do
       patch :publish, params: { id: voter_guide.id }
     end
 
@@ -12,32 +12,33 @@ describe VoterGuidesController do
         session[:current_user_id] = create(:user).id
       end
       it "ignores this" do
-        action
+        subject
         value(voter_guide.published_at).must_be_nil
       end
     end
 
     describe "when the owner is logged in but not confirmed" do
       before do
-        skip('waiting for email confirmation flag to be removed')
+        ENV['REQUIRE_CONFIRMATION_TO_PUBLISH']='1'
+        # skip('waiting for email confirmation flag to be removed')
         session[:current_user_id] = voter_guide.author_id
       end
 
       it "redirects" do
         value(voter_guide.published_at).must_be_nil
-        action
+        subject
         assert_redirected_to new_email_confirmation_path
       end
 
       it "creates a new confirmation" do
         old_count = EmailConfirmation.count
-        action
+        subject
         value(EmailConfirmation.count).must_equal(old_count + 1)
       end
 
       it "sends an email" do
         assert_emails 1 do
-          action
+          subject
         end
       end
     end
@@ -50,7 +51,7 @@ describe VoterGuidesController do
 
       it "publishes the guide" do
         value(voter_guide.published_at).must_be_nil
-        action
+        subject
         value(voter_guide.reload.published_at).must_be_close_to(Time.now, 2.seconds)
       end
     end

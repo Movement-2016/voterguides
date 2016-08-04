@@ -9,5 +9,7 @@
 
   <body>
     <%= yield %>
+    <p>&nbsp;</p>
+  <footer>To unsubscribe from these emails, follow this link: <%= link_to unsubscribe_url(@unsubscribe), unsubscribe_url(@unsubscribe) %></footer>
   </body>
 </html>
