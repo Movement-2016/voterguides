@@ -5,6 +5,11 @@
   <div><%= link_to "Edit This Guide", edit_voter_guide_path(@voter_guide) %></div>
 <% end %>
 <div><%= @voter_guide.presenter.supporter_text %></div>
+<div class="fb-share-button"
+     data-href="<%= voter_guide_path(@voter_guide) %>"
+     data-layout="button_count">
+</div>
+
 <div>
   <% if current_user && current_user.supports?(@voter_guide) %>
     <span class="glyphicon glyphicon-heart"></span>
@@ -27,8 +32,10 @@
 <% else %>
   <p><%= link_to "Go to the Guide", @voter_guide.external_guide_url, target: :blank %></p>
 <% end %>
-<meta property="og:url"         content="<%= voter_guide_url(@voter_guide) %>" />
-<meta property="og:type"        content="article" />
-<meta property="og:title"       content="<%= @voter_guide.name %>" />
-<meta property="og:description" content="<%= @voter_guide.presenter.location_and_description_text %>" />
-<meta property="og:image"       content="<%= image_url('theme/League_Header_01.gif') %>" />
+<%= content_for :open_graph do %>
+  <meta property="og:url"         content="<%= voter_guide_url(@voter_guide) %>" />
+  <meta property="og:type"        content="article" />
+  <meta property="og:title"       content="<%= @voter_guide.name %>" />
+  <meta property="og:description" content="<%= @voter_guide.presenter.location_and_description_text %>" />
+  <meta property="og:image"       content="<%= image_url('theme/League_Header_01.gif') %>" />
+<% end %>
