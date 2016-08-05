@@ -1,6 +1,7 @@
 class VoterGuide < ApplicationRecord
   belongs_to :author, class_name: "User"
   has_many :endorsements, -> { order(:guide_order) }, dependent: :destroy
+  has_many :supporters
 
   validates :name, presence: true,
             uniqueness: {

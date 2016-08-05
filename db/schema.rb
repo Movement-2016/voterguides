@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803213325) do
+ActiveRecord::Schema.define(version: 20160804201540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20160803213325) do
     t.string   "initiative"
     t.boolean  "recommendation"
     t.index ["voter_guide_id"], name: "index_endorsements_on_voter_guide_id", using: :btree
+  end
+
+  create_table "supporters", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "voter_guide_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_supporters_on_user_id", using: :btree
+    t.index ["voter_guide_id"], name: "index_supporters_on_voter_guide_id", using: :btree
   end
 
   create_table "unsubscribe_options", force: :cascade do |t|
@@ -78,6 +87,8 @@ ActiveRecord::Schema.define(version: 20160803213325) do
 
   add_foreign_key "email_confirmations", "users"
   add_foreign_key "endorsements", "voter_guides"
+  add_foreign_key "supporters", "users"
+  add_foreign_key "supporters", "voter_guides"
   add_foreign_key "unsubscribe_options", "users"
   add_foreign_key "voter_guides", "users", column: "author_id"
 end

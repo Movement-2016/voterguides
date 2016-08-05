@@ -2,6 +2,16 @@ require 'test_helper'
 
 describe User do
   let(:user) { create :user }
+  describe "#supports?" do
+    describe "when the user supports a guide" do
+      let(:voter_guide) { create :voter_guide }
+      it "should be true" do
+        voter_guide.supporters.create user: user
+        expect(user.supports?(voter_guide)).must_equal(true)
+      end
+    end
+  end
+
   describe "#email_confirmed?" do
     describe "with a new voterguide" do
       it "should be false" do

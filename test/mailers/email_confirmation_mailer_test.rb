@@ -26,6 +26,7 @@ describe EmailConfirmationMailer do
 
     describe "when the target user has unsubscribed" do
       it "does not send an email" do
+        email
         option = UnsubscribeOption.create(user: user, requested_at: Time.now)
         assert_emails 0 do
           email.deliver_now

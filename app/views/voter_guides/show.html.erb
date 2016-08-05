@@ -4,7 +4,17 @@
 <% if can? :edit, @voter_guide %>
   <div><%= link_to "Edit This Guide", edit_voter_guide_path(@voter_guide) %></div>
 <% end %>
-
+<div>
+  <% if current_user && current_user.supports?(@voter_guide) %>
+    <span class="glyphicon glyphicon-heart"></span>
+    I support this guide.
+  <% else %>
+    <%= link_to voter_guide_supporters_path(@voter_guide), method: :post, class: "btn btn-success" do %>
+      <span class="glyphicon glyphicon-heart"></span>
+      Support this Guide
+    <% end %>
+  <% end %>
+</div>
 <% if @voter_guide.presenter.show_endorsements? %>
   <h3>Endorsements</h3>
   <%= render 'endorsements/toggle' %>
