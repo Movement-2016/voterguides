@@ -5,6 +5,11 @@ class VoterGuidePresenter < SimpleDelegator
     model.published_at.strftime("%B %e, %Y")
   end
 
+  def supporter_text
+    return unless supporters.count > 0
+    "#{supporters.count} #{'supporter'.pluralize(supporters.count)}"
+  end
+
   def show_url
     if model.external_guide_url.present?
       model.external_guide_url

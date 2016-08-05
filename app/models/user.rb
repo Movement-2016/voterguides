@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :uid, presence: true, uniqueness: true
 
   has_many :authored_voter_guides, class_name: 'VoterGuide', foreign_key: 'author_id'
-  has_many :supporters
+  has_many :supporters, dependent: :destroy
   has_many :supported_voter_guides, through: :supporters, source: :voter_guide, class_name: 'VoterGuide'
   has_many :email_confirmations, dependent: :destroy
   has_many :unsubscribe_options, dependent: :destroy
