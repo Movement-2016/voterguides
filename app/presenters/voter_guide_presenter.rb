@@ -5,6 +5,15 @@ class VoterGuidePresenter < SimpleDelegator
     model.published_at.strftime("%B %e, %Y")
   end
 
+  def location_and_description_text
+    ["#{target_city}, #{target_state}", description_text].select(&:present?).join(" &mdash; ")
+  end
+
+  def description_text
+    return model.description if model.description.present?
+    endorsements.highlighted.limit(3).map { |e| e.presenter.summary_text }.join(' &bullet; ')
+  end
+
   def supporter_text
     return unless supporters.count > 0
     "#{supporters.count} #{'supporter'.pluralize(supporters.count)}"

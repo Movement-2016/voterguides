@@ -27,3 +27,8 @@
 <% else %>
   <p><%= link_to "Go to the Guide", @voter_guide.external_guide_url, target: :blank %></p>
 <% end %>
+<meta property="og:url"         content="<%= voter_guide_url(@voter_guide) %>" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="<%= @voter_guide.name %>" />
+<meta property="og:description" content="<%= @voter_guide.presenter.location_and_description_text %>" />
+<meta property="og:image"       content="<%= image_url('theme/League_Header_01.gif') %>" />
