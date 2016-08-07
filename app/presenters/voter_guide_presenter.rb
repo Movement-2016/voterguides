@@ -5,8 +5,12 @@ class VoterGuidePresenter < SimpleDelegator
     model.published_at.strftime("%B %e, %Y")
   end
 
-  def location_and_description_text
-    ["#{target_city}, #{target_state}", description_text].select(&:present?).join(" &mdash; ")
+  def share_description
+    [basic_description, description_text].select(&:present?).join(" &mdash; ")
+  end
+
+  def basic_description
+    "A grassroots voter guide for #{target_city}, #{target_state}"
   end
 
   def description_text

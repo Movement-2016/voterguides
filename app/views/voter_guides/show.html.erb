@@ -5,10 +5,7 @@
   <div><%= link_to "Edit This Guide", edit_voter_guide_path(@voter_guide) %></div>
 <% end %>
 <div><%= @voter_guide.presenter.supporter_text %></div>
-<div class="fb-share-button"
-     data-href="<%= voter_guide_path(@voter_guide) %>"
-     data-layout="button_count">
-</div>
+<div class="fb-like" data-href="<%= voter_guide_url(@voter_guide) %>" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 
 <div>
   <% if current_user && current_user.supports?(@voter_guide) %>
@@ -36,6 +33,6 @@
   <meta property="og:url"         content="<%= voter_guide_url(@voter_guide) %>" />
   <meta property="og:type"        content="article" />
   <meta property="og:title"       content="<%= @voter_guide.name %>" />
-  <meta property="og:description" content="<%= @voter_guide.presenter.location_and_description_text %>" />
+  <meta property="og:description" content="<%= @voter_guide.presenter.share_description %>" />
   <meta property="og:image"       content="<%= image_url('theme/League_Header_01.gif') %>" />
 <% end %>

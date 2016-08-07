@@ -26,3 +26,4 @@
 //= require map_listener
 //= require endorsements
 //= require voterguides
+//= require facebook_shim
