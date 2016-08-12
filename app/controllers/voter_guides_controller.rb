@@ -20,7 +20,7 @@ class VoterGuidesController < ApplicationController
   end
 
   def index
-    search = VoterGuide.upcoming.published
+    search = VoterGuide.page(params[:page]).per(100).upcoming.published
     search = search.by_state(params[:search_state]) if params[:search_state]
     @voter_guides = search
   end

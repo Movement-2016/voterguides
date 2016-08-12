@@ -39,6 +39,7 @@ gem 'ranked-model'
 gem 'carmen'
 gem 'aws-sdk'
 gem 'aws-sdk-rails'
+gem 'kaminari'
 
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
