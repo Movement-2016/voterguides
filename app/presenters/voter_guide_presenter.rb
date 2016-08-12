@@ -10,7 +10,11 @@ class VoterGuidePresenter < SimpleDelegator
   end
 
   def basic_description
-    "A grassroots voter guide for #{target_city}, #{target_state}"
+    "A grassroots voter guide for #{location_text}"
+  end
+
+  def location_text
+    "#{target_city}, #{target_state}"
   end
 
   def description_text

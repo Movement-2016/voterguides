@@ -60,10 +60,7 @@ class VoterGuidesController < ApplicationController
   end
 
   def allow_guide_uploads
-    @upload_guide_target ||= S3_BUCKET.presigned_post(
-      key: "uploads/#{SecureRandom.uuid}/${filename}",
-      success_action_status: '201',
-      acl: 'public-read')
+    @upload_guide_target ||= UploadTarget.new("uploads")
   end
 
 end

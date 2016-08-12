@@ -1,8 +1,33 @@
 require 'test_helper'
 
 describe VoterGuidesController do
-  let(:voter_guide) { create(:voter_guide, :with_author) }
+  describe "#create" do
+    let(:voter_guide_attr) { attributes_for(:voter_guide) }
+    describe "without a logged-in user" do
+      subject do
+        post :create, params: { voter_guide: voter_guide_attr }
+      end
+      it "fails" do
+        subject
+        assert_redirected_to new_session_path
+      end
+    end
+
+    describe "when the user has logged in" do
+      let(:user) { create :user }
+      subject do
+        post :create, params: { voter_guide: voter_guide_attr }, session: { current_user_id: user.id }
+      end
+      it "marks the user as the guide author" do
+        assert_difference("VoterGuide.count", 1) do
+          subject
+        end
+        expect(VoterGuide.last.author).must_equal(user)
+      end
+    end
+  end
   describe "#publish" do
+    let(:voter_guide) { create(:voter_guide, :with_author) }
     subject do
       patch :publish, params: { id: voter_guide.id }
     end

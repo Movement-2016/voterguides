@@ -40,6 +40,12 @@ gem 'carmen'
 gem 'aws-sdk'
 gem 'aws-sdk-rails'
 
+gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'ransack',             github: 'activerecord-hackery/ransack'
+gem 'draper',              '> 3.x'
+# gem 'sass-rails',          github: 'rails/sass-rails' # For Sprockets 4
+
 # used for populating sample voter guides
 gem 'factory_girl'
 gem 'faker'

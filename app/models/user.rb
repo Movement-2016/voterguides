@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :email_confirmations, dependent: :destroy
   has_many :unsubscribe_options, dependent: :destroy
 
+  scope :alpha, -> { order("LOWER(name)") }
+  scope :admin, -> { where(admin: true)}
+
   class << self
     def find_or_create_from_auth_hash!(auth_hash)
       where(uid: pull_uid(auth_hash)).first_or_create!(

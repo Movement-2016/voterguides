@@ -3,7 +3,7 @@
 <%= form.input :target_city, label: "Guide City", placeholder: "Indianapolis" %>
 <%= form.input :target_state, label: "Guide State", collection: GeographyPresenter::ELIGIBLE_STATES, include_blank: "Select State" %>
 <%= form.input :election_date, as: :datepicker %>
-<div id="voterguide_pdf_uploader" data-form-data="<%= @upload_guide_target.fields.to_json %>" data-url="<%= @upload_guide_target.url %>", data-host="<%= URI.parse(@upload_guide_target.url).host %>">
+<div id="voterguide_pdf_uploader" <%= @upload_guide_target.data %>>
 </div>
 <%= form.input :external_guide_url, label: "Upload Guide", as: :file, input_html: {accept: ".pdf", id: "guide_uploader"} %>
 <%= form.input :external_guide_url %>

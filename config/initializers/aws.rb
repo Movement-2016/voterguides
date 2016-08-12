@@ -6,7 +6,7 @@ if ENV['S3_BUCKET_NAME']
         credentials: aws_credentials
       })
 
-    S3_BUCKET = Aws::S3::Resource.new.bucket(ENV['S3_BUCKET_NAME'])
+    UploadTarget.bucket = Aws::S3::Resource.new.bucket(ENV['S3_BUCKET_NAME'])
 
     Aws::Rails.add_action_mailer_delivery_method(:aws_ses, credentials: aws_credentials, region: ENV['AWS_REGION'])
   end
