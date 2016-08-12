@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160807142303) do
+ActiveRecord::Schema.define(version: 20160812044434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 20160807142303) do
     t.string   "initiative"
     t.boolean  "recommendation"
     t.index ["voter_guide_id"], name: "index_endorsements_on_voter_guide_id", using: :btree
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "zipcode", limit: 5
+    t.string "city"
+    t.string "county"
+    t.string "state",   limit: 2
+    t.index ["state"], name: "index_locations_on_state", using: :btree
+    t.index ["zipcode"], name: "index_locations_on_zipcode", using: :btree
   end
 
   create_table "supporters", force: :cascade do |t|

@@ -6,8 +6,18 @@
       Your vote is powerful. But ballots can be confusing! Find a voter guide for your area, or create your own guide that other folks can use. Easy!
     </p>
   </div>
-  <div class="col-md-1"></div>
-  <div class="col-md-5">
+  <div class="col-xs-6 col-xs-offset-3">
+
+    <%= form_for :search, url: voter_guides_path, method: :get, html: { class: "form-inline", id: "zip_search_form" } do |f| %>
+      <div class="form-group">
+        <%= f.label :zip, "Guides Near Me", class: 'control-label' %>
+        <%= f.text_field :zip, autofocus: true,  class: "form-control", placeholder: "Zip Code", pattern: "\\d{5}", title: "Enter a 5 digit numeric zip code" %>
+        <%= f.submit "Search", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-md-5 col-md-offset-1">
     <h2>Find Local Guides</h2>
     <p>Click the map to jump to guides in each state</p>
     <div class="searchable_map_container">

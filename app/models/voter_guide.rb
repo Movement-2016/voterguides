@@ -18,8 +18,9 @@ class VoterGuide < ApplicationRecord
   accepts_nested_attributes_for :endorsements, reject_if: :all_blank, allow_destroy: true
 
   scope :upcoming, -> { where("election_date >= ?", Date.today)}
-  scope :by_state, ->(state) { where(target_state: state) }
   scope :published, -> { where.not(published_at: nil) }
+  scope :by_state, ->(state) { where(target_state: state) }
+  scope :by_zip, ->(zip) { GeographyPresenter.new(zip).search(VoterGuide) }
 
   def presenter
     @presenter ||= VoterGuidePresenter.new(self)
