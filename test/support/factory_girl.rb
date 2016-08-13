@@ -57,6 +57,13 @@ FactoryGirl.define do
       confirmed_at { 1.week.ago }
     end
   end
+
+  factory :election do
+    transient { current_location }
+
+    name { "#{current_location.county} Primary" }
+    election_date { 1.year.from_now }
+  end
 end
 
 class FakeVoterGuide

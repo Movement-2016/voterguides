@@ -1,5 +1,8 @@
 class UploadTarget < Struct.new(:folder_name)
-  cattr_accessor :bucket
+
+  def self.bucket
+    @bucket ||= S3_BUCKET
+  end
 
   def post
     @post ||= UploadTarget.bucket.presigned_post(
@@ -9,11 +12,11 @@ class UploadTarget < Struct.new(:folder_name)
   end
 
   def data
-    return "data-bucket=\"Bucket not defined\"" unless UploadTarget.bucket
-    [
-      "data-form-data=\"#{post.fields.to_json}\"",
-      "data-url=\"#{post.url}\"",
-      "data-host=\"#{URI.parse(post.url).host}\""
-    ].join(" ")
+    return { bucket: "Bucket not defined" } unless UploadTarget.bucket
+    {
+      "form-data"=> post.fields,
+      :url =>  post.url,
+      :host =>  URI.parse(post.url).host
+    }
   end
 end

@@ -1,6 +1,23 @@
 require 'test_helper'
 
 describe VoterGuidesController do
+  let(:user) { create :user }
+  describe "#new" do
+    subject do
+      get :new, session: { current_user_id: user.id }
+    end
+    describe "when an upcoming election exists" do
+      before do
+        create :election, election_date: 2.months.ago
+        @target = create :election, election_date: 1.months.from_now
+        create :election, election_date: 2.months.from_now
+      end
+      it "should default to the soonest upcoming election" do
+        subject
+        value(assigns(:voter_guide).election_date).must_equal(@target.election_date)
+      end
+    end
+  end
   describe "#create" do
     let(:voter_guide_attr) { attributes_for(:voter_guide) }
     describe "without a logged-in user" do
@@ -14,7 +31,6 @@ describe VoterGuidesController do
     end
 
     describe "when the user has logged in" do
-      let(:user) { create :user }
       subject do
         post :create, params: { voter_guide: voter_guide_attr }, session: { current_user_id: user.id }
       end

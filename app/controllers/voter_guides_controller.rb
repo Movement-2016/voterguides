@@ -4,7 +4,7 @@ class VoterGuidesController < ApplicationController
   load_and_authorize_resource
 
   def new
-    @voter_guide = VoterGuide.new
+    @voter_guide = VoterGuide.new election_date: Election.upcoming.first.try(:election_date)
   end
 
   def create
