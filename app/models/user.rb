@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   scope :alpha, -> { order("LOWER(name)") }
   scope :admin, -> { where(admin: true)}
+  scope :suspended, -> { where.not(suspended_at: nil) }
+  scope :admissible, -> { where(suspended_at: nil) }
 
   class << self
     def find_or_create_from_auth_hash!(auth_hash)
@@ -33,5 +35,9 @@ class User < ApplicationRecord
 
   def supports?(voter_guide)
     supported_voter_guides.where(id: voter_guide.id).any?
+  end
+
+  def suspended?
+    suspended_at?
   end
 end

@@ -5,6 +5,7 @@ ActiveAdmin.register User do
 
   scope :all, default: true
   scope :admin
+  scope :suspended
 
   filter :name
   filter :email
@@ -24,4 +25,17 @@ ActiveAdmin.register User do
     f.actions
   end
 
+  batch_action :suspend do |ids|
+    batch_action_collection.find(ids).each do |user|
+      user.touch :suspended_at
+    end
+    redirect_to collection_path, alert: "the users have been suspended"
+  end
+
+  batch_action :unsuspend do |ids|
+    batch_action_collection.find(ids).each do |user|
+      user.update_attributes suspended_at: nil
+    end
+    redirect_to collection_path, alert: "the guides have been unsuspended"
+  end
 end

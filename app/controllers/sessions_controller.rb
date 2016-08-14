@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
 
   def create
     @current_user = User.find_or_create_from_auth_hash!(auth_hash)
+    raise SuspendedUser if @current_user.suspended?
     session[:current_user_id] = @current_user.to_param
     redirect_to session.delete(:redirect_to) || root_path
   rescue ActiveRecord::RecordInvalid

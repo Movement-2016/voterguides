@@ -9,6 +9,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  class SuspendedUser < StandardError
+    def message
+      "User has been suspended"
+    end
+  end
+
+  rescue_from SuspendedUser do |exception|
+    redirect_to root_path, alert: exception.message
+  end
+
   protected
 
   def current_user
