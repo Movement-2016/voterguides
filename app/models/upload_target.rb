@@ -1,7 +1,9 @@
 class UploadTarget < Struct.new(:folder_name)
 
   def self.bucket
-    @bucket ||= S3_BUCKET
+    if defined?(S3_BUCKET)
+      @bucket ||= S3_BUCKET
+    end
   end
 
   def post

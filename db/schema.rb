@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812194736) do
+ActiveRecord::Schema.define(version: 20160814010603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,7 +114,9 @@ ActiveRecord::Schema.define(version: 20160812194736) do
     t.datetime "published_at"
     t.integer  "supporters_count"
     t.text     "description"
+    t.datetime "recommended_at"
     t.index ["author_id"], name: "index_voter_guides_on_author_id", using: :btree
+    t.index ["recommended_at"], name: "index_voter_guides_on_recommended_at", using: :btree
   end
 
   add_foreign_key "email_confirmations", "users"

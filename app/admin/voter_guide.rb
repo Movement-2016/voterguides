@@ -37,6 +37,20 @@ ActiveAdmin.register VoterGuide do
     redirect_to collection_path, alert: "the guides have been unpublished"
   end
 
+  batch_action :recommend do |ids|
+    batch_action_collection.find(ids).each do |vg|
+      vg.touch :recommended_at
+    end
+    redirect_to collection_path, alert: "the guides have been recommended"
+  end
+
+  batch_action :unrecommend do |ids|
+    batch_action_collection.find(ids).each do |vg|
+      vg.update_attributes recommended_at: nil
+    end
+    redirect_to collection_path, alert: "the guides have been unrecommended"
+  end
+
   filter :author_name, as: :string
   filter :name, label: "Guide Name"
   filter :target_city
@@ -45,6 +59,7 @@ ActiveAdmin.register VoterGuide do
   scope :all, default: true
   scope :published
   scope :upcoming
+  scope :recommended
 
   index do
     selectable_column
@@ -58,6 +73,7 @@ ActiveAdmin.register VoterGuide do
     column(:location) { |vg| vg.presenter.location_text }
     column(:election_date) { |vg| vg.election_date.strftime("%Y-%m-%d")}
     column(:published) { |vg| vg.published? ? status_tag("yes", :gray) : ""}
+    column(:recommended) { |vg| vg.recommended? ? status_tag("yes", :gray) : ""}
     column(:author) { |vg| link_to vg.author.name, admin_user_path(vg.author) }
     column(:link_or_image) { |vg| vg.external_guide_url.present? ? status_tag("yes", :ok) : "" }
   end

@@ -37,6 +37,10 @@ FactoryGirl.define do
     trait :with_author do
       author
     end
+
+    trait :published do
+      published_at { rand(100).days.ago }
+    end
   end
 
   factory :endorsement do

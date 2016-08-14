@@ -19,6 +19,7 @@ class VoterGuide < ApplicationRecord
 
   scope :upcoming, -> { where("election_date >= ?", Date.today)}
   scope :published, -> { where.not(published_at: nil) }
+  scope :recommended, -> { where.not(recommended_at: nil) }
   scope :by_state, ->(state) { where(target_state: state) }
   scope :by_zip, ->(zip) { GeographyPresenter.new(zip).search(VoterGuide) }
 
@@ -28,5 +29,9 @@ class VoterGuide < ApplicationRecord
 
   def published?
     published_at?
+  end
+
+  def recommended?
+    recommended_at?
   end
 end

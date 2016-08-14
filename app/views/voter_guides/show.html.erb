@@ -7,7 +7,7 @@
 <div><%= @voter_guide.presenter.supporter_text %></div>
 <div class="fb-like" data-href="<%= voter_guide_url(@voter_guide) %>" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 
-<div>
+<div class="hidden">
   <% if current_user && current_user.supports?(@voter_guide) %>
     <span class="glyphicon glyphicon-heart"></span>
     I support this guide.
