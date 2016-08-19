@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include SecureIdModel
+
   before_validation :update_uid
   validates :uid, presence: true, uniqueness: true
 

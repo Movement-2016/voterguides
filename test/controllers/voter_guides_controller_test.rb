@@ -4,7 +4,7 @@ describe VoterGuidesController do
   let(:user) { create :user }
   describe "#new" do
     subject do
-      get :new, session: { current_user_id: user.id }
+      get :new, session: { current_user_id: user.to_param }
     end
     describe "when an upcoming election exists" do
       before do
@@ -32,7 +32,7 @@ describe VoterGuidesController do
 
     describe "when the user has logged in" do
       subject do
-        post :create, params: { voter_guide: voter_guide_attr }, session: { current_user_id: user.id }
+        post :create, params: { voter_guide: voter_guide_attr }, session: { current_user_id: user.to_param }
       end
       it "marks the user as the guide author" do
         assert_difference("VoterGuide.count", 1) do
@@ -62,7 +62,7 @@ describe VoterGuidesController do
       before do
         ENV['REQUIRE_CONFIRMATION_TO_PUBLISH']='1'
         # skip('waiting for email confirmation flag to be removed')
-        session[:current_user_id] = voter_guide.author_id
+        session[:current_user_id] = voter_guide.author.to_param
       end
 
       it "redirects" do
@@ -87,7 +87,7 @@ describe VoterGuidesController do
     describe "when the owner is logged in with a confirmed email address" do
       before do
         create :email_confirmation, :confirmed, user: voter_guide.author
-        session[:current_user_id] = voter_guide.author_id
+        session[:current_user_id] = voter_guide.author.to_param
       end
 
       it "publishes the guide" do

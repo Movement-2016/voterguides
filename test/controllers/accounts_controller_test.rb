@@ -4,7 +4,7 @@ describe AccountsController do
   describe "GET #show" do
     let(:user) { create :user }
     def action
-      get :show, params: { id: user.id }, session: { current_user_id: user.id }
+      get :show, params: { id: user.to_param }, session: { current_user_id: user.to_param }
     end
     it "loads the requested user" do
       action
