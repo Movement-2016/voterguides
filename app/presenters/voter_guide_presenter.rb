@@ -14,6 +14,7 @@ class VoterGuidePresenter < SimpleDelegator
   end
 
   def location_text
+    return "#{target_state} state" if statewide
     "#{target_city}, #{target_state}"
   end
 

@@ -21,8 +21,15 @@ ActiveAdmin.register User do
 
   form do |f|
     f.semantic_errors
+    panel "Secure ID" do
+      f.object.to_param
+    end
     f.inputs :name, :email, :admin
     f.actions
+  end
+
+  controller do
+    defaults finder: :find_by_secure_id
   end
 
   batch_action :suspend do |ids|

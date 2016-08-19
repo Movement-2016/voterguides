@@ -20,9 +20,10 @@ class VoterGuidesController < ApplicationController
   end
 
   def index
-    search = VoterGuide.page(params[:page]).per(100).upcoming.published
-    search = search.by_state(params[:search_state]) if params[:search_state]
+    search = VoterGuide
     search = search.by_zip(params[:search][:zip]) if params[:search] && params[:search][:zip]
+    search = search.by_state(params[:search_state]) if params[:search_state]
+    search = search.page(params[:page]).per(100).upcoming.published
     @voter_guides = search
   end
 
@@ -53,7 +54,7 @@ class VoterGuidesController < ApplicationController
 
   def voter_guide_params
     params.require(:voter_guide).permit(
-      :name, :target_city, :target_state, :election_date, :external_guide_url,
+      :name, :target_city, :target_state, :election_date, :external_guide_url, :statewide,
       endorsements_attributes:
         [:id, :_destroy,
          :initiative, :recommendation,

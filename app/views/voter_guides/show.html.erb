@@ -1,5 +1,5 @@
 <h2><%= @voter_guide.name %></h2>
-<div><%= @voter_guide.target_city %>, <%= @voter_guide.target_state %></div>
+<div><%= @voter_guide.presenter.location_text %></div>
 <div>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></div>
 <% if can? :edit, @voter_guide %>
   <div><%= link_to "Edit This Guide", edit_voter_guide_path(@voter_guide) %></div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819011226) do
+ActiveRecord::Schema.define(version: 20160819013659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 20160819011226) do
     t.text     "description"
     t.datetime "recommended_at"
     t.string   "secure_id",          limit: 12, null: false
+    t.boolean  "statewide"
     t.index ["author_id"], name: "index_voter_guides_on_author_id", using: :btree
     t.index ["recommended_at"], name: "index_voter_guides_on_recommended_at", using: :btree
     t.index ["secure_id"], name: "index_voter_guides_on_secure_id", using: :btree

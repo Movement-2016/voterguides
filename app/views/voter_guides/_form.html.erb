@@ -1,6 +1,7 @@
 <%= form.error :base, :error_method => :to_sentence %>
 <%= form.input :name, label: "Guide Title"  %>
 <%= form.input :target_city, label: "Guide City", placeholder: "Indianapolis" %>
+<%= form.input :statewide, label: "Statewide Guide", hint:"Statewide guides will not be connected to a specific city" %>
 <%= form.input :target_state, label: "Guide State", collection: GeographyPresenter::ELIGIBLE_STATES, include_blank: "Select State" %>
 <%= form.input :election_date, as: :datepicker %>
 <%= content_tag :div, nil, id:"voterguide_pdf_uploader", data: @upload_guide_target.data %>

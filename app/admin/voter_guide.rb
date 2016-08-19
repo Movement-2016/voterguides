@@ -1,11 +1,14 @@
 ActiveAdmin.register VoterGuide do
   actions :all, except: [:new, :create]
 
-  permit_params :name, :target_city, :target_state, :election_date, :external_guide_url, :description
+  permit_params :name, :target_city, :target_state, :statewide, :election_date, :external_guide_url, :description
 
   form do |f|
     f.semantic_errors
-    f.inputs :name, :target_city, :target_state, :election_date, :external_guide_url, :description
+    panel "Secure ID" do
+      f.object.to_param
+    end
+    f.inputs :name, :target_city, :target_state, :statewide, :election_date, :external_guide_url, :description
     if f.object.author
       panel "Author" do
         link_to f.object.author.name, edit_admin_user_path(f.object.author)
@@ -58,12 +61,13 @@ ActiveAdmin.register VoterGuide do
   filter :author_name, as: :string
   filter :name, label: "Guide Name"
   filter :target_city
-  filter :target_state, as: :select, collection: -> { GeographyPresenter::ELIGIBLE_STATES.map(&:first) }
+  filter :target_state, as: :select, collection: GeographyPresenter::ELIGIBLE_STATES
 
   scope :all, default: true
   scope :published
   scope :upcoming
   scope :recommended
+  scope :statewide
 
   index do
     selectable_column

@@ -1,5 +1,5 @@
 <h4><%= link_to voter_guide.name, voter_guide.presenter.show_url, data: {guide_id: voter_guide.to_param}, target: "#{'blank' if voter_guide.external_guide_url.present?}" %></h4>
-<div><%= voter_guide.target_city %>, <%= voter_guide.target_state %></div>
+<div><%= voter_guide.presenter.location_text %></div>
 <div>Election Day: <%= voter_guide.election_date.strftime("%B %e, %Y")%></div>
 <div><%= voter_guide.presenter.supporter_text %></div>
 <% if voter_guide.presenter.show_endorsements? %>
