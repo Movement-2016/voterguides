@@ -51,6 +51,10 @@ ActiveAdmin.register VoterGuide do
     redirect_to collection_path, alert: "the guides have been unrecommended"
   end
 
+  controller do
+    defaults finder: :find_by_secure_id
+  end
+
   filter :author_name, as: :string
   filter :name, label: "Guide Name"
   filter :target_city

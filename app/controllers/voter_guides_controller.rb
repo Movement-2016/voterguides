@@ -1,7 +1,7 @@
 class VoterGuidesController < ApplicationController
   before_action :require_login, except: [:show, :index]
   before_action :allow_guide_uploads, except: [:show, :publish, :index]
-  load_and_authorize_resource
+  load_and_authorize_resource find_by: :secure_id
 
   def new
     @voter_guide = VoterGuide.new election_date: Election.upcoming.first.try(:election_date)

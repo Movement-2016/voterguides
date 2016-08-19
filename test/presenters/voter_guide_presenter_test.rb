@@ -5,7 +5,7 @@ describe VoterGuidePresenter do
   let(:voter_guide) { create(:voter_guide) }
   describe "#show_url" do
     it "returns the internal voter guide path" do
-      presenter.show_url.must_match(/\/voter_guides\/\d+/)
+      presenter.show_url.must_match(/\/voter_guides\/.{3}/)
     end
 
     describe "when initialized with an external_guide_url" do

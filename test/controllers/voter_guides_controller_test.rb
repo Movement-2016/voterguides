@@ -45,7 +45,7 @@ describe VoterGuidesController do
   describe "#publish" do
     let(:voter_guide) { create(:voter_guide, :with_author) }
     subject do
-      patch :publish, params: { id: voter_guide.id }
+      patch :publish, params: { id: voter_guide.to_param }
     end
 
     describe "when the owner is not logged in" do

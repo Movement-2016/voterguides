@@ -10,6 +10,7 @@ class VoterGuide < ApplicationRecord
   validates :target_state, presence: true
   validates :target_city, presence: true
   validates :election_date, presence: true
+  validates :secure_id, presence: true, uniqueness: true
   validates :external_guide_url,
             format: { with: /\A#{URI::regexp(['http', 'https'])}\z/,
                       message: "must be a standard Web address",
@@ -23,6 +24,8 @@ class VoterGuide < ApplicationRecord
   scope :by_state, ->(state) { where(target_state: state) }
   scope :by_zip, ->(zip) { GeographyPresenter.new(zip).search(VoterGuide) }
 
+  before_validation :generate_secure_id, on: :create
+
   def presenter
     @presenter ||= VoterGuidePresenter.new(self)
   end
@@ -33,5 +36,13 @@ class VoterGuide < ApplicationRecord
 
   def recommended?
     recommended_at?
+  end
+
+  def generate_secure_id
+    self.secure_id = SecureRandom.urlsafe_base64(8)
+  end
+
+  def to_param
+    secure_id
   end
 end
