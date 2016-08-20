@@ -25,4 +25,13 @@ class EmailConfirmation < ActiveRecord::Base
   def to_param
     confirmation_code
   end
+
+  def confirm!
+    touch :confirmed_at
+    if user.uid == user.email
+      user.auth_hash["confirmed_email"] = email
+    end
+    user.email = email
+    user.save
+  end
 end

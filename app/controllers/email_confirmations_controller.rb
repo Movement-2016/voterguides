@@ -18,8 +18,7 @@ class EmailConfirmationsController < ApplicationController
 
   def show
     @email_confirmation = current_user.email_confirmations.where(confirmation_code: params[:id]).first!
-    @email_confirmation.touch :confirmed_at
-    @email_confirmation.user.update_attributes email: @email_confirmation.email
+    @email_confirmation.confirm!
     redirect_to account_path(current_user)
   end
 

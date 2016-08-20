@@ -23,7 +23,7 @@ class User < ApplicationRecord
     end
 
     def pull_uid(auth_hash)
-      auth_hash["info"]["email"] || auth_hash["uid"]
+      auth_hash["confirmed_email"] || auth_hash["info"]["email"] || auth_hash["uid"]
     end
   end
 

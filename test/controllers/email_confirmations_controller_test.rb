@@ -22,5 +22,21 @@ describe EmailConfirmationsController do
       subject
       assert_redirected_to account_path(user)
     end
+
+    describe "when the users uid is not the old email address" do
+      it "should not update the uid" do
+        uid = user.uid
+        subject
+        expect(user.reload.uid).must_equal(uid)
+      end
+    end
+
+    describe "when the users uid is the old email address" do
+      it "should update the uid" do
+        user.update_attributes auth_hash: user.auth_hash.merge(info: {email: user.email})
+        subject
+        expect(user.reload.uid).must_equal(confirmation.email)
+      end
+    end
   end
 end
