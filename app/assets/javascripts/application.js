@@ -15,16 +15,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require cocoon
-//= require us-map-1.0.1/lib/raphael
-//= require us-map-1.0.1/example/color.jquery
-//= require us-map-1.0.1/jquery.usmap
 //= require sortable
 //= require jquery.ui.widget
 //= require z.jquery.fileupload
 //= require bootstrap-toggle
 //= require d3
 
-//= require map_listener
 //= require endorsements
 //= require voterguides
 //= require facebook_shim
