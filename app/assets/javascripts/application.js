@@ -22,8 +22,10 @@
 //= require jquery.ui.widget
 //= require z.jquery.fileupload
 //= require bootstrap-toggle
+//= require d3
 
 //= require map_listener
 //= require endorsements
 //= require voterguides
 //= require facebook_shim
+//= require d3_map

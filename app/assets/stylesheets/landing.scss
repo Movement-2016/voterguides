@@ -2,6 +2,15 @@
   margin: 0 auto;
 }
 
+.searchable_map_element {
+  fill: #91A6C5;
+
+  &:hover {
+    fill: #607DA5;
+  }
+}
+
+
 @media (max-width: 768px) {
   #searchable_map {
     height: 200px;
