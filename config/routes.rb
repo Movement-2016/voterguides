@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :unsubscribes, only: [:show, :update]
 
   resources :endorsements, only: :update
+  resources :registrations, only: :new
 end

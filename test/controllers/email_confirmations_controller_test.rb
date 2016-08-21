@@ -23,19 +23,12 @@ describe EmailConfirmationsController do
       assert_redirected_to account_path(user)
     end
 
-    describe "when the users uid is not the old email address" do
-      it "should not update the uid" do
-        uid = user.uid
+    describe "when the user has an identity with the old email address" do
+      it "should update the email on the identity" do
+        identity = create :identity, email: user.email
+        user.update_attributes provider: 'identity', uid: identity.id
         subject
-        expect(user.reload.uid).must_equal(uid)
-      end
-    end
-
-    describe "when the users uid is the old email address" do
-      it "should update the uid" do
-        user.update_attributes auth_hash: user.auth_hash.merge(info: {email: user.email})
-        subject
-        expect(user.reload.uid).must_equal(confirmation.email)
+        expect(identity.reload.email).must_equal(confirmation.email)
       end
     end
   end

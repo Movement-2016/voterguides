@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819013659) do
+ActiveRecord::Schema.define(version: 20160821025050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 20160819013659) do
     t.index ["voter_guide_id"], name: "index_endorsements_on_voter_guide_id", using: :btree
   end
 
+  create_table "identities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "zipcode", limit: 5
     t.string "city"
@@ -102,6 +110,8 @@ ActiveRecord::Schema.define(version: 20160819013659) do
     t.boolean  "admin"
     t.datetime "suspended_at"
     t.string   "secure_id",    limit: 12, null: false
+    t.string   "provider"
+    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
     t.index ["secure_id"], name: "index_users_on_secure_id", using: :btree
   end
 

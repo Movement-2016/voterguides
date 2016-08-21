@@ -28,8 +28,9 @@ class EmailConfirmation < ActiveRecord::Base
 
   def confirm!
     touch :confirmed_at
-    if user.uid == user.email
-      user.auth_hash["confirmed_email"] = email
+    if user.identity
+      user.identity.email = email
+      user.identity.save
     end
     user.email = email
     user.save

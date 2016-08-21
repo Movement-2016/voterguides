@@ -14,11 +14,19 @@ FactoryGirl.define do
   factory :user do
     name { "Juan Doe #{generate(:current_order)}" }
     email { "doe#{generate(:current_order)}@example.com" }
-    auth_hash { { uid: SecureRandom.hex(10), info: {}}}
+    uid {SecureRandom.hex(10) }
+    provider 'test'
+    # auth_hash { { uid: SecureRandom.hex(10), info: {}, provider: 'test'}}
 
     factory :author do
       email { "author#{generate(:current_order)}@example.com" }
     end
+  end
+
+  factory :identity do
+    name { "Juan Doe #{generate(:current_order)}" }
+    email { "doe#{generate(:current_order)}@example.com" }
+    password { "foo#{generate(:current_order)}"}
   end
 
   factory :voter_guide do

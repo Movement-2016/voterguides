@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'omniauth-facebook'
+gem 'omniauth-identity'
 gem 'bootstrap-sass', '>=3.3.6'
 gem 'simple_form'
 gem 'cocoon'

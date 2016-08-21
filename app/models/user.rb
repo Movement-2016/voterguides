@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   include SecureIdModel
 
-  before_validation :update_uid
-  validates :uid, presence: true, uniqueness: true
+  validates :uid, presence: true, uniqueness: { scope: :provider }
 
   has_many :authored_voter_guides, class_name: 'VoterGuide', foreign_key: 'author_id'
   has_many :supporters, dependent: :destroy
@@ -17,18 +16,10 @@ class User < ApplicationRecord
 
   class << self
     def find_or_create_from_auth_hash!(auth_hash)
-      where(uid: pull_uid(auth_hash)).first_or_create!(
+      where(uid: auth_hash['uid'], provider: auth_hash['provider']).first_or_create!(
         auth_hash["info"].slice("name", "email", "image").merge(auth_hash: auth_hash)
       )
     end
-
-    def pull_uid(auth_hash)
-      auth_hash["confirmed_email"] || auth_hash["info"]["email"] || auth_hash["uid"]
-    end
-  end
-
-  def update_uid
-    self.uid = User.pull_uid(self.auth_hash)
   end
 
   def email_confirmed?
@@ -41,5 +32,10 @@ class User < ApplicationRecord
 
   def suspended?
     suspended_at?
+  end
+
+  def identity
+    return unless provider == 'identity'
+    @identity ||= Identity.find(uid)
   end
 end
