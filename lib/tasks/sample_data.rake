@@ -8,7 +8,7 @@ namespace :sample_data do
       @users << FactoryGirl.create(:user, name: Faker::Name.name)
     end
     20.times do
-      @voter_guides << FactoryGirl.create(:voter_guide, :with_endorsements, :published, author: @users[rand(1)], recommended_at: (Date.today if rand(10) == 0))
+      @voter_guides << FactoryGirl.create(:voter_guide, :with_endorsements, :published, author: @users[rand(5)], recommended_at: (Date.today if rand(10) == 0))
     end
 
   end

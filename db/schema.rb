@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821025050) do
+ActiveRecord::Schema.define(version: 20160910220908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,16 @@ ActiveRecord::Schema.define(version: 20160821025050) do
     t.index ["zipcode"], name: "index_locations_on_zipcode", using: :btree
   end
 
+  create_table "password_resets", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "reset_code"
+    t.datetime "reset_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "email"
+    t.index ["user_id"], name: "index_password_resets_on_user_id", using: :btree
+  end
+
   create_table "supporters", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "voter_guide_id"
@@ -130,6 +140,7 @@ ActiveRecord::Schema.define(version: 20160821025050) do
     t.datetime "recommended_at"
     t.string   "secure_id",          limit: 12, null: false
     t.boolean  "statewide"
+    t.integer  "endorsements_count"
     t.index ["author_id"], name: "index_voter_guides_on_author_id", using: :btree
     t.index ["recommended_at"], name: "index_voter_guides_on_recommended_at", using: :btree
     t.index ["secure_id"], name: "index_voter_guides_on_secure_id", using: :btree
@@ -137,6 +148,7 @@ ActiveRecord::Schema.define(version: 20160821025050) do
 
   add_foreign_key "email_confirmations", "users"
   add_foreign_key "endorsements", "voter_guides"
+  add_foreign_key "password_resets", "users"
   add_foreign_key "supporters", "users"
   add_foreign_key "supporters", "voter_guides"
   add_foreign_key "unsubscribe_options", "users"

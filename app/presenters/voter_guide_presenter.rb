@@ -24,8 +24,8 @@ class VoterGuidePresenter < SimpleDelegator
   end
 
   def supporter_text
-    return unless supporters.count > 0
-    "#{supporters.count} #{'supporter'.pluralize(supporters.count)}"
+    return unless supporters.length > 0
+    "#{supporters.size} #{'supporter'.pluralize(supporters.size)}"
   end
 
   def show_url

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   match "/auth/:provider/callback" => 'sessions#create', as: "login_callback", via: [:get, :post]
   get 'logout', to: "sessions#destroy"
+  resources :password_resets, only: [:show, :update, :new, :create]
 
   resource :session, only: [:new, :create]
 

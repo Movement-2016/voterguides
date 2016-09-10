@@ -1,0 +1,10 @@
+<div class="col-md-4">
+
+  <h1>Reset your Password</h1>
+
+  <%= simple_form_for @password_reset.user.identity, url: password_reset_path(@password_reset) do |f| %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.button :submit, "Reset Password", class: 'btn btn-primary' %>
+  <% end %>
+</div>

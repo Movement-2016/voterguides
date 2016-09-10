@@ -1,7 +1,7 @@
 class Endorsement < ApplicationRecord
   include RankedModel
 
-  belongs_to :voter_guide
+  belongs_to :voter_guide, counter_cache: true
 
   validates :voter_guide, presence: true
   validates :office, presence: true, unless: :initiative?

@@ -46,7 +46,7 @@
     <% if VoterGuide.recommended.upcoming.published.any? %>
       <h2>Recommended Guides</h2>
       <ul class="list-unstyled">
-        <% VoterGuide.recommended.upcoming.published.order(published_at: :desc).limit(10).each do |vg| %>
+        <% VoterGuide.recommended.upcoming.joins(:supporters, :endorsements).published.order(published_at: :desc).limit(10).each do |vg| %>
           <li>
             <%= render 'voter_guides/list_info', voter_guide: vg %>
           </li>
@@ -57,7 +57,7 @@
   <div class="col-md-5">
     <h2>Recently Published Guides</h2>
     <ul class="list-unstyled">
-      <% VoterGuide.upcoming.published.order(published_at: :desc).limit(10).each do |vg| %>
+      <% VoterGuide.upcoming.published.joins(:supporters, :endorsements).order(published_at: :desc).limit(10).each do |vg| %>
         <li>
           <%= render 'voter_guides/list_info', voter_guide: vg %>
         </li>
