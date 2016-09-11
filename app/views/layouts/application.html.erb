@@ -10,11 +10,12 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'setup_page', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" id="google-fonts-css" href="//fonts.googleapis.com/css?family=Arvo%3A700italic%7CLato%3A400%2C700%2C900%2C400italic&amp;ver=4.5.4" type="text/css" media="all">
   </head>
 
   <body>
+    <%= render "layouts/header" %>
     <div class="container">
-      <%= render "layouts/header" %>
       <div class="row main-content">
         <div class="col-xs-12">
           <%= render 'layouts/alerts' %>

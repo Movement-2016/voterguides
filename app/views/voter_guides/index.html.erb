@@ -1,14 +1,17 @@
-<h2>Voter Guides</h2>
+<div class="highlight-block">
+  <h2>Voter Guides</h2>
 
-<% if @voter_guides.empty? %>
-  <p>No voter guides found for <%= params[:search_state] || params[:search][:zip] %></p>
-<% else %>
-  <ul>
-    <% @voter_guides.each do |voter_guide| %>
-      <li>
+  <% if @voter_guides.empty? %>
+    <p>No voter guides found for <%= params[:search_state] || params[:search][:zip] %></p>
+    <p>
+      <%= link_to "Make one now", new_voter_guide_path %>
+    </p>
+  <% else %>
+    <div class="offset-list">
+      <% @voter_guides.each do |voter_guide| %>
         <%= render 'list_info', voter_guide: voter_guide %>
-      </li>
-    <% end %>
-  </ul>
-  <%= paginate @voter_guides %>
-<% end %>
+      <% end %>
+    </div>
+    <%= paginate @voter_guides %>
+  <% end %>
+</div>

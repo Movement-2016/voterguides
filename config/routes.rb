@@ -23,4 +23,5 @@ Rails.application.routes.draw do
 
   resources :endorsements, only: :update
   resources :registrations, only: :new
+  resources :guide_collections, only: [:index, :show]
 end

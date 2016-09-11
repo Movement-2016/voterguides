@@ -1,66 +1,89 @@
-<div class="main-content--landing">
-  <div class="col-xs-12 text-center">
-
-    <h2>Do-It-Yourself Local Voter Guides</h2>
-    <p>
-      Your vote is powerful. But ballots can be confusing! Find a voter guide for your area, or create your own guide that other folks can use. Easy!
-    </p>
-  </div>
-  <div class="col-xs-6 col-xs-offset-3 text-center">
-
-    <%= form_for :search, url: voter_guides_path, method: :get, html: { class: "form-inline", id: "zip_search_form" } do |f| %>
-      <div class="form-group">
-        <%= f.label :zip, "Guides Near Me", class: 'control-label' %>
-        <%= f.text_field :zip, autofocus: true,  class: "form-control", placeholder: "Zip Code", pattern: "\\d{5}", title: "Enter a 5 digit numeric zip code" %>
-        <%= f.submit "Search", class: "btn btn-primary" %>
-      </div>
+<div class="col-md-8 text-center">
+  <div class="lowlight-header">
+    <%= simple_form_for :search, url: voter_guides_path, method: :get do |f| %>
+      <%= f.input :state, label: false, autofocus: true,
+                  collection: GeographyPresenter::ELIGIBLE_STATES, include_blank: "Select State or click on map below",
+                  input_html: {id: "state_quickselect"} %>
     <% end %>
   </div>
-  <div class="clearfix"></div>
-  <div class="col-md-5 col-md-offset-1 text-center">
-    <h2>Find Local Guides</h2>
-    <p>Click the map to jump to guides in each state</p>
+
+  <small>
+    Click on the map below or use the dropdown menu to view voter guides from the state
+  </small>
+  <p>&nbsp;</p>
+
+  <div class="lowlight-header">
     <div class="searchable_map_container">
       <div id="searchable_map"></div>
     </div>
   </div>
-  <div class="col-md-5 text-center">
+  <p>&nbsp;</p>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_ecN8yT_9kQ"></iframe>
+  </div>
 
-    <h2>Make a Voter Guide</h2>
-    <div id="create_guide_section">
-      <div id="create_guide_howto">
-        <p>&nbsp;</p>
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_ecN8yT_9kQ"></iframe>
-        </div>
-        <p>&nbsp;</p>
-      </div>
-      <div id="crate_guide_cta">
-        <%= link_to "Create Guide", new_voter_guide_path, class: 'btn btn-success' %>
+  <p>&nbsp;</p>
+
+  <% if VoterGuide.recommended.upcoming.published.any? %>
+    <div class="highlight-block">
+    <h2>Featured Guides</h2>
+      <div class="offset-list">
+        <% VoterGuide.recommended.upcoming.includes(:supporters, :endorsements).published.order(published_at: :desc).limit(10).each do |vg| %>
+          <%= render 'voter_guides/list_info', voter_guide: vg %>
+        <% end %>
       </div>
     </div>
-  </div>
-  <div class="clearfix"></div>
+  <% end %>
 
-  <div class="col-md-5 col-md-offset-1">
-    <% if VoterGuide.recommended.upcoming.published.any? %>
-      <h2>Recommended Guides</h2>
-      <ul class="list-unstyled">
-        <% VoterGuide.recommended.upcoming.joins(:supporters, :endorsements).published.order(published_at: :desc).limit(10).each do |vg| %>
-          <li>
-            <%= render 'voter_guides/list_info', voter_guide: vg %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
-  <div class="col-md-5">
-    <h2>Recently Published Guides</h2>
-    <ul class="list-unstyled">
-      <% VoterGuide.upcoming.published.joins(:supporters, :endorsements).order(published_at: :desc).limit(10).each do |vg| %>
-        <li>
+  <% if VoterGuide.upcoming.published.any? %>
+    <div class="highlight-block">
+      <h2>Recent Guides</h2>
+      <div class="offset-list">
+        <% VoterGuide.upcoming.published.includes(:supporters, :endorsements).order(published_at: :desc).limit(10).each do |vg| %>
           <%= render 'voter_guides/list_info', voter_guide: vg %>
-        </li>
-      <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<div class="col-md-4 text-center">
+  <div class="shadowed-block">
+    <h2 class="lowlight-header">
+      <%= VoterGuide.upcoming.published.count %> guides and counting...
+    </h2>
+    <div class="lowlight-block">
+      <h1>Browse Voter Guides</h1>
+      <p>
+        <%= link_to "create new guide", new_voter_guide_path, class: "btn btn-theballot btn-lg", role: "button" %>
+      </p>
+      <p>
+        <%= link_to "view more guides", guide_collections_path, class: "btn btn-theballot btn-lg", role: "button" %>
+      </p>
+    </div>
   </div>
+
+  <div class="lowlight-block text-left shadowed-block">
+
+    <h2>Do-It-Yourself Local Voter Guides</h2>
+    <p>
+      Your vote is powerful. But ballots can be confusing! Find a voter guide for your area, or create your own guide that other people can use. Easy!
+    </p>
+
+  </div>
+
+  <div class="highlight-block">
+    <h2>Facebook embed here</h2>
+  </div>
+
+  <div class="highlight-block">
+    <h2>Twitter embed here</h2>
+  </div>
+
+  <div class="lowlight-block">
+    <h2>Useful links</h2>
+
+  </div>
+
 </div>

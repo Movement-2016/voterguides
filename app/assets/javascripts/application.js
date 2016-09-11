@@ -25,3 +25,4 @@
 //= require voterguides
 //= require facebook_shim
 //= require d3_map
+//= require quickselect

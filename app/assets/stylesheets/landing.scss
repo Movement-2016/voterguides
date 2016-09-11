@@ -3,10 +3,10 @@
 }
 
 .searchable_map_element {
-  fill: #91A6C5;
+  fill: #aec26d;
 
   &:hover {
-    fill: #607DA5;
+    fill: #b29e81;
   }
 }
 
@@ -14,19 +14,6 @@
 @media (max-width: 768px) {
   #searchable_map {
     height: 200px;
-  }
-
-  #create_guide_section {
-    display: flex;
-    flex-flow: column;
-  }
-
-  #create_guide_cta {
-    order: 1;
-  }
-
-  #create_guide_howto {
-    order: 2;
   }
 
 }

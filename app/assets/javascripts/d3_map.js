@@ -40,8 +40,8 @@ function initD3Map(selector) {
 
       .append("path")
       .attr("d", path)
-      .attr("stroke", "white")
-      .attr("stroke-width", 0.5)
+      .attr("stroke", "#e2eee1")
+      .attr("stroke-width", 0.3)
       .attr("class", 'searchable_map_element')
   };
 

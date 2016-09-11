@@ -1,0 +1,17 @@
+<div class="highlight-block">
+  <h2>Guide Collections</h2>
+
+  <%= link_to "All Featured Guides", guide_collection_path("featured") %>
+</div>
+<div class="highlight-block">
+  <h2>Guides By Election</h2>
+
+  <ul class="offset-list list-unstyled">
+    <% VoterGuide.group(:election_date).order(election_date: :desc).count.each do |election_date, guide_count| %>
+      <li>
+        <%= link_to "#{election_date.strftime("%Y-%m-%d")}: #{guide_count}",
+                    guide_collection_path("election", election_date: election_date.strftime("%Y-%m-%d") ) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

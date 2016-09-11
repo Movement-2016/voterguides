@@ -1,0 +1,13 @@
+<div class="highlight-block">
+  <h2>Voter Guides</h2>
+  <div class="offset-list">
+    <% if @voter_guides.empty? %>
+      <p>No voter guides found for <%= params[:id] %></p>
+    <% else %>
+      <% @voter_guides.each do |voter_guide| %>
+        <%= render 'voter_guides/list_info', voter_guide: voter_guide %>
+      <% end %>
+      <%= paginate @voter_guides %>
+    <% end %>
+  </div>
+</div>
