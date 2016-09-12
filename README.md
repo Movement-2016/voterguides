@@ -64,6 +64,10 @@ If you'd like to test your local app against facebook login, you'll need to crea
 ## AWS Uploads
 Uploads are stored in AWS.  If you don't configure AWS keys, guide uploads will not work.
 
+## Recaptcha Keys
+Users are verified before login by Google's recaptcha.  Get keys for that here:
+[https://www.google.com/recaptcha](https://www.google.com/recaptcha)
+
 ## Starting the server
 
 To start the server using the local environment configuration, use the heroku local command

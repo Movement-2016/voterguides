@@ -26,6 +26,9 @@
           <%= label_tag :password, nil, class: 'control-label' %><br>
           <%= password_field_tag :password, nil, class: 'form-control' %>
         </div>
+        <p>
+          <%= recaptcha_tags %>
+        </p>
         <div class="actions"><%= submit_tag "Login", class: 'btn btn-primary'%></div>
       <% end %>
       <small><%= link_to "forgot password?", new_password_reset_path %></small>
