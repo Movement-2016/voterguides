@@ -113,6 +113,15 @@ body {
   border-radius: 6px;
 }
 
+
+@media (max-width: 768px) {
+  .league-icon {
+    height: 50px;
+    width: 50px;
+  }
+
+}
+
 .offset-list {
   margin-left: 10px;
 }

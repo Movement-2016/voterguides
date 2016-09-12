@@ -16,10 +16,11 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    if @password_reset.user.identity.update(pw_reset_params)
+    if params[:identity][:password].present? && @password_reset.user.identity.update(pw_reset_params)
       @password_reset.touch :reset_at
       redirect_to new_session_path, notice: "Password updated, please log in"
     else
+      flash.now[:notice] = "Try again"
       render :show
     end
   end

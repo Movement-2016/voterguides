@@ -1,11 +1,12 @@
 <div class="col-md-6">
-
-  <h1>Request a Password Reset</h1>
-  <p>
-    To request a password reset, enter your email in the form below
-  </p>
-  <%= simple_form_for @password_reset do |f| %>
-    <%= f.input :email %>
-    <%= f.button :submit, "Request a Password Reset Link", class: "btn btn-primary" %>
-  <% end %>
+  <div class="highlight-block">
+    <h2>Request a Password Reset</h2>
+    <p>
+      To request a password reset, enter your email in the form below
+    </p>
+    <%= simple_form_for @password_reset do |f| %>
+      <%= f.input :email %>
+      <%= f.button :submit, "Request a Password Reset Link", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>

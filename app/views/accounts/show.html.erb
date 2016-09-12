@@ -1,17 +1,17 @@
-<h2><%= @account.name %></h2>
-<% if @account.authored_voter_guides.any? %>
-  <ul>
+<div class="highlight-block">
+
+<h2>Guides Authored by <%= @account.name %></h2>
+  <% if @account.authored_voter_guides.any? %>
     <% @account.authored_voter_guides.order(created_at: :desc).each do |vg| %>
-      <li>
-        <%= render 'voter_guides/core_info', voter_guide: vg %>
-        <% if can? :edit, vg %>
-          <%= link_to "Edit", edit_voter_guide_path(vg) %>
-        <% end %>
-      </li>
+      <p>&nbsp;</p>
+      <%= render 'voter_guides/core_info', voter_guide: vg %>
+      <% if can? :edit, vg %>
+        <%= link_to "Edit", edit_voter_guide_path(vg) %>
+      <% end %>
     <% end %>
-  </ul>
-<% else %>
-  <p>You have not yet created any guides,
-  <%= link_to "start one now", new_voter_guide_path %>
-  </p>
-<% end %>
+  <% else %>
+    <p>You have not yet created any guides,
+    <%= link_to "start one now", new_voter_guide_path %>
+    </p>
+  <% end %>
+</div>

@@ -1,7 +1,10 @@
-<h1>Unsubscribe from future emails</h1>
+<div class="highlight-block">
 
-<p>You are about to unsubscribe from all emails from <%= SITE_NAME %> to <%= @unsubscribe_option.email.gsub(/(....).*(@.*)/, '\1****\2') %></p>
+  <h2>Unsubscribe from future emails</h2>
 
-<%= simple_form_for @unsubscribe_option, url: unsubscribe_path(@unsubscribe_option) do |f| %>
-  <%= f.button :submit, "Unsubscribe", class: "btn btn-primary" %>
-<% end %>
+  <p>You are about to unsubscribe from all emails from <%= SITE_NAME %> to <%= @unsubscribe_option.email.gsub(/(....).*(@.*)/, '\1****\2') %></p>
+
+  <%= simple_form_for @unsubscribe_option, url: unsubscribe_path(@unsubscribe_option) do |f| %>
+    <%= f.button :submit, "Unsubscribe", class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -1,31 +1,35 @@
-<div class="col-md-4">
-  <h1>Welcome to <%= SITE_NAME %></h1>
-  <p>To create or endorse a voter guide, you'll need to log in</p>
-  <% if ENV['FACEBOOK_KEY'] %>
-    <p><%= link_to "Sign In with Facebook", '/auth/facebook', class: 'btn btn-primary' %></p>
-  <% end %>
-  <p>
-    <strong>Don&rsquo;t use Facebook?</strong>
-    <%= link_to "Create an account", new_registration_path %> or
-    <%= link_to "login here", "#login_fields", data: {toggle: "collapse"}, aria: {controls: "login_fields", expanded: false} %>
+<div class="col-md-6">
+  <div class="highlight-block">
+    <h2>Welcome to <%= SITE_NAME %></h2>
+    <p>To create or endorse a voter guide, you'll need to log in</p>
+    <% if ENV['FACEBOOK_KEY'] %>
+      <p><%= link_to "Sign In with Facebook", '/auth/facebook', class: 'btn btn-lg btn-primary' %></p>
+    <% end %>
+    <p>
+      <strong>Don&rsquo;t use Facebook?</strong>
+      <%= link_to "Create an account", new_registration_path %> or
+      <%= link_to "login here", "#login_fields", data: {toggle: "collapse"}, aria: {controls: "login_fields", expanded: false} %>
 
-  </p>
-
+    </p>
+  </div>
 
   <div class="collapse"  id="login_fields">
-    <h2>Log In</h2>
-    <%= form_tag "/auth/identity/callback" do %>
-      <div class="form-group">
-        <%= label_tag :auth_key, "Email", class: 'control-label' %><br>
-        <%= text_field_tag :auth_key, nil, class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= label_tag :password, nil, class: 'control-label' %><br>
-        <%= password_field_tag :password, nil, class: 'form-control' %>
-      </div>
-      <div class="actions"><%= submit_tag "Login", class: 'btn btn-primary'%></div>
-    <% end %>
-    <small><%= link_to "forgot password?", new_password_reset_path %></small>
+    <div class="highlight-block">
+
+      <h2>Log In</h2>
+      <%= form_tag "/auth/identity/callback" do %>
+        <div class="form-group">
+          <%= label_tag :auth_key, "Email", class: 'control-label' %><br>
+          <%= text_field_tag :auth_key, nil, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :password, nil, class: 'control-label' %><br>
+          <%= password_field_tag :password, nil, class: 'form-control' %>
+        </div>
+        <div class="actions"><%= submit_tag "Login", class: 'btn btn-primary'%></div>
+      <% end %>
+      <small><%= link_to "forgot password?", new_password_reset_path %></small>
+    </div>
   </div>
 
 
