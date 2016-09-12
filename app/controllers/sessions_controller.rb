@@ -20,7 +20,11 @@ class SessionsController < ApplicationController
 
   def check_for_captcha
     return unless auth_hash['provider'] == 'identity'
-    verify_recaptcha || redirect_to(new_session_path, notice: "Please try again")
+    return if verify_recaptcha
+    if params[:password_confirmation]
+      Identity.find(auth_hash['uid']).destroy
+    end
+    redirect_to(new_session_path, notice: "Please try again")
   end
 
   def auth_hash
