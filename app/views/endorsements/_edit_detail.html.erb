@@ -1,4 +1,4 @@
-<div class="panel endorsement_list_item" data-target-url="<%= endorsement_path(endorsement) %>">
+<div class="panel endorsement_list_item nested-fields" data-target-url="<%= endorsement_path(endorsement) %>">
   <div class="panel-heading" role="tab" id="endorsement--heading-<%= endorsement.to_param %>">
     <span class="glyphicon glyphicon-th endorsement_handle"></span>
     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#endorsement_list" href="#collapse-endorsement-<%= endorsement.to_param %>" aria-expanded="false" aria-controls="collapse-endorsement-<%= endorsement.to_param %>">
@@ -8,6 +8,11 @@
 
       <%= endorsement.presenter.summary_text %>
     </a>
+    &nbsp;
+    &nbsp;
+    <%= link_to_remove_association endorsement_form, title: "Remove Endorsement" do %>
+      <span class="text-danger" aria-hidden="true">&times;</span>
+    <% end %>
   </div>
   <div id="collapse-endorsement-<%= endorsement.to_param %>"  class="panel-collapse collapse" role="tabpanel" aria-labelledby="endorsement--heading-<%= endorsement.to_param %>">
     <div class="panel-body">

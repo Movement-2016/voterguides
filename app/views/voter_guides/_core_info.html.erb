@@ -6,7 +6,7 @@
   <% if voter_guide.published? %>
     Published on <%= voter_guide.presenter.publish_date %>
   <% else %>
-    DRAFT GUIDE
+    <div class="text-danger">DRAFT GUIDE</div>
     <% if can? :publish, voter_guide %>
       <%= link_to "Publish Now", publish_voter_guide_path(voter_guide), class: "btn btn-info", method: :patch %>
     <% end %>

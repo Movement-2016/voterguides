@@ -1,4 +1,4 @@
-<div class="nested-fields well">
+<div class="well">
   <%= f.input :initiative, placeholder: 'Local Bond Measure ZZ', required: true %>
   <%= f.input :recommendation, label: "Recommendation", required: true,
               input_html: {data: {toggle: "vg_toggle", on: "VOTE YES", onstyle: "success", off: "VOTE NO", offstyle: "danger" }} %>
@@ -6,5 +6,4 @@
               hint: '<small>e.g. Yuba County, City of Springfield, Alabama</small>'.html_safe %>
   <%= f.input :explanation, input_html: {rows: 10}, label: 'Why this Recommendation?', placeholder: 'I did five minutes of research and here\'s what I discovered' %>
   <%= f.input :highlight, label: 'Highlight this Recommendation in Guide Description' %>
-  <%= link_to_remove_association "remove endorsement", f %>
 </div>

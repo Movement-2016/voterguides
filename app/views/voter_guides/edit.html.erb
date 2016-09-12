@@ -1,43 +1,52 @@
-<%= render 'core_info', voter_guide: @voter_guide %>
-<%= simple_form_for @voter_guide, html: {multipart: true} do |f| %>
-
+<div class="highlight-block">
+  <%= render 'core_info', voter_guide: @voter_guide %>
   <%= link_to "Edit Guide Fields", "#voter_guide_core_fields", data: {toggle: "collapse"}, aria: {controls: "voter_guide_core_fields", expanded: false} %>
 
-  <div class="collapse <%= "in" if @voter_guide.presenter.show_core_form? %>"  id="voter_guide_core_fields">
-    <div class="well">
-      <%= render 'voter_guides/form', form: f %>
-      <%= f.button :submit, "Update", class: "btn btn-primary"  %>
-    </div>
-  </div>
-
-  <% if @voter_guide.presenter.show_endorsements? %>
-    <h3>Endorsements</h3>
-    <%= render 'endorsements/toggle' %>
-    <div id="endorsement_list" class="panel-group" role="tablist" aria-multiselectable="true">
-      <%= f.simple_fields_for :endorsements do |endorsement| %>
-        <% if endorsement.object.new_record? %>
-          <%= render 'endorsements/edit_detail_with_errors', endorsement: endorsement.object, endorsement_form: endorsement %>
-        <% else %>
-          <%= render 'endorsements/edit_detail', endorsement: endorsement.object, endorsement_form: endorsement %>
-        <% end %>
-      <% end %>
-    </div>
-    <div id="endorsements">
-      <div class="endorsements--links">
-        <p>
-          <%= link_to_add_association 'Endorse Another Candidate', f, :endorsements, partial: 'endorsements/form', class: "btn btn-success" %>
-        </p>
-        <p>
-          <%= link_to_add_association 'Add a Ballot Initiative', f, :endorsements, partial: 'endorsements/initiative_form', class: "btn btn-success" %>
-        </p>
+  <%= simple_form_for @voter_guide, html: {multipart: true} do |f| %>
+    <div class="collapse <%= "in" if @voter_guide.presenter.show_core_form? %>"  id="voter_guide_core_fields">
+      <div class="well">
+        <%= render 'voter_guides/form', form: f %>
+        <%= f.button :submit, "Update", class: "btn btn-primary"  %>
       </div>
     </div>
-    <p>&nbsp;</p>
-    <p>
-      <%= f.button :submit, "Save this Guide", class: "btn btn-primary"  %>
-    </p>
-  <% else %>
-    <p>Endorsements are disabled because this guide references a file or external link.</p>
+
+    <% if @voter_guide.presenter.show_endorsements? %>
+      <h3>Endorsements</h3>
+      <%= render 'endorsements/toggle' %>
+      <div id="endorsement_list" class="panel-group" role="tablist" aria-multiselectable="true">
+        <%= f.simple_fields_for :endorsements do |endorsement| %>
+          <% if endorsement.object.new_record? %>
+            <%= render 'endorsements/edit_detail_with_errors', endorsement: endorsement.object, endorsement_form: endorsement %>
+          <% else %>
+            <%= render 'endorsements/edit_detail', endorsement: endorsement.object, endorsement_form: endorsement %>
+          <% end %>
+        <% end %>
+      </div>
+      <div id="endorsements">
+        <div class="endorsements--links">
+          <% if @voter_guide.endorsements.any? %>
+            <p>
+              <%= link_to_add_association 'Endorse Another Candidate', f, :endorsements, partial: 'endorsements/form', class: "btn btn-success" %>
+            </p>
+          <% else %>
+            Next Step: Add some positions to your Guide
+            <p>
+              <%= link_to_add_association 'Endorse A Candidate', f, :endorsements, partial: 'endorsements/form', class: "btn btn-success" %>
+            </p>
+          <% end %>
+          <p>
+            <%= link_to_add_association 'Add a Ballot Initiative', f, :endorsements, partial: 'endorsements/initiative_form', class: "btn btn-success" %>
+          </p>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <p>
+        <%= f.button :submit, "Save this Guide", class: "btn btn-primary"  %>
+      </p>
+    <% else %>
+      <p>Endorsements are disabled because this guide references a file or external link.</p>
+    <% end %>
   <% end %>
-<% end %>
+
+</div>
 

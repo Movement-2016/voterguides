@@ -11,7 +11,7 @@ class EndorsementPresenter < SimpleDelegator
 
   def item_description
     description = candidate_name? ? office : initiative
-    if description.include? jurisdiction
+    if description.present? && description.include?(jurisdiction)
       description
     else
       "#{jurisdiction} #{description}"

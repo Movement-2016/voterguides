@@ -1,6 +1,9 @@
-<h2>Create your voter guide</h2>
+<div class="lowlight-block">
+  <h2>Create your voter guide</h2>
 
-<%= simple_form_for @voter_guide, html: {multipart: true} do |f| %>
-  <%= render 'form', form: f %>
-  <%= f.button :submit, "Ready", class: "btn btn-primary"  %>
-<% end %>
+  <%= simple_form_for @voter_guide, html: {multipart: true} do |f| %>
+    <%= render 'form', form: f %>
+    <%= f.button :submit, "Ready", class: "btn btn-theballot"  %>
+  <% end %>
+
+</div>

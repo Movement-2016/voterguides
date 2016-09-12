@@ -66,7 +66,7 @@
 
   <div class="lowlight-block text-left shadowed-block">
 
-    <h2>Do-It-Yourself Local Voter Guides</h2>
+    <h4>Do-It-Yourself Local Voter Guides</h4>
     <p>
       Your vote is powerful. But ballots can be confusing! Find a voter guide for your area, or create your own guide that other people can use. Easy!
     </p>
@@ -74,16 +74,25 @@
   </div>
 
   <div class="highlight-block">
-    <h2>Facebook embed here</h2>
-  </div>
-
-  <div class="highlight-block">
-    <h2>Twitter embed here</h2>
+    <a class="twitter-timeline"  href="https://twitter.com/hashtag/localballot" data-widget-id="775126658730766337" data-chrome="nofooter">#localballot Tweets</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </div>
 
   <div class="lowlight-block">
-    <h2>Useful links</h2>
-
+    <h4>Useful links</h4>
+    <p><%= link_to "Find my polling place", "http://www.vote411.org/" %></p>
+    <p><%= link_to "Am I Registered to Vote?", "https://www.vote.org/am-i-registered-to-vote/" %></p>
+    <p><%= link_to "Vote Absentee", "https://www.vote.org/absentee-ballot/" %></p>
   </div>
 
+</div>
+<div class="col-xs-12">
+  <div class="highlight-block">
+    <h2>Partners</h2>
+    <div class="text-center">
+      <%= image_tag 'localballot/gamechanger_logo.png', alt: "Gamechanger Labs", class: 'partner-logo' %>
+      <%= image_tag 'localballot/vote_mob_logo.png', alt: "Vote Mob", class: 'partner-logo' %>
+      <%= image_tag 'localballot/student_power_logo.png', alt: "Student Power", class: 'partner-logo' %>
+    </div>
+  </div>
 </div>
