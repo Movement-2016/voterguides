@@ -21,6 +21,8 @@ class SessionsController < ApplicationController
   def check_for_captcha
     return unless auth_hash['provider'] == 'identity'
     return if verify_recaptcha
+    # if the user is creating a new account but has failed the captcha, we must drop the identity
+    # created or no one will be able to use that email.
     if params[:password_confirmation]
       Identity.find(auth_hash['uid']).destroy
     end
