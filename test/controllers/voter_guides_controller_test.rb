@@ -60,8 +60,6 @@ describe VoterGuidesController do
 
     describe "when the owner is logged in but not confirmed" do
       before do
-        ENV['REQUIRE_CONFIRMATION_TO_PUBLISH']='1'
-        # skip('waiting for email confirmation flag to be removed')
         session[:current_user_id] = voter_guide.author.to_param
       end
 

@@ -39,7 +39,7 @@ class VoterGuidesController < ApplicationController
   end
 
   def publish
-    if ENV['REQUIRE_CONFIRMATION_TO_PUBLISH'].blank? || current_user.email_confirmed?
+    if current_user.email_confirmed?
       @voter_guide.touch :published_at
       flash[:notice] = "Guide has been published"
       redirect_to edit_voter_guide_path(@voter_guide)
