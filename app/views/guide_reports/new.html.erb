@@ -1,0 +1,10 @@
+<div class="highlight-block">
+  <h2>Report this Guide: <%= @voter_guide.name %></h2>
+  <p>
+    Please let us know about any guides that are inappropriate and don't contribute to the localballot community.
+  </p>
+  <%= simple_form_for @guide_report, url: voter_guide_reports_path(@voter_guide) do |f| %>
+    <%= f.input :body, label: "What should we know about this guide?" %>
+    <%= f.button :submit, label: "Send us your report", class: 'btn btn-primary' %>
+  <% end %>
+</div>

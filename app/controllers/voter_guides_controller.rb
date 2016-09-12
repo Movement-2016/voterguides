@@ -10,6 +10,7 @@ class VoterGuidesController < ApplicationController
   def create
     @voter_guide = VoterGuide.new(voter_guide_params.merge(author: current_user))
     if @voter_guide.save
+      GuidesReportingMailer.guide_created(@voter_guide.id).deliver_now
       redirect_to edit_voter_guide_path(@voter_guide)
     else
       render :new

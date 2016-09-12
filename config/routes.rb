@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create]
 
   resources :voter_guides do
+    resources :guide_reports, only: [:new, :create], as: :reports
     resources :supporters, only: [:create, :index]
     member do
       patch :publish

@@ -1,0 +1,7 @@
+A new guide has been created on <%= SITE_HOST %>
+
+The guide is called <%= @voter_guide.name %> by <%= @voter_guide.author.name %>
+
+view it here: <%= voter_guide_url(@voter_guide) %>
+
+admin access: <%= admin_voter_guide_url(@voter_guide) %>

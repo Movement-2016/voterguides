@@ -1,0 +1,14 @@
+A voter guide on <%= SITE_HOST %> has been reported as potentially inappropriate.
+
+<% if @guide_report.reporter %>
+  The reporter was <%= @guide_report.reporter.name %>
+  (you can look them up here: <%= admin_user_url(@guide_report.reporter) %>)
+<% end %>
+
+view the guide here: <%= voter_guide_url(@voter_guide) %>
+
+admin access: <%= admin_voter_guide_url(@voter_guide) %>
+
+here is the report:
+
+<%= @guide_report.body %>

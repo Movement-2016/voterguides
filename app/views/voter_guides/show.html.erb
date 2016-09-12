@@ -1,6 +1,12 @@
 <div class="highlight-block">
   <h2><%= @voter_guide.name %></h2>
-  <div><%= @voter_guide.presenter.location_text %></div>
+  <div><%= @voter_guide.presenter.location_text %>
+    &nbsp;
+    <%= link_to new_voter_guide_report_path(@voter_guide), title: "Report this Guide" do %>
+      <span class="glyphicon glyphicon-warning-sign text-danger"></span>
+      <span class="sr-only">Report this Guide</span>
+    <% end %>
+  </div>
   <div>Election: <%= @voter_guide.election_date.strftime('%B %d, %Y') %></div>
   <% if can? :edit, @voter_guide %>
     <div><%= link_to "Edit This Guide", edit_voter_guide_path(@voter_guide) %></div>

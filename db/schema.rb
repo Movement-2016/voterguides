@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912003553) do
+ActiveRecord::Schema.define(version: 20160912023229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 20160912003553) do
     t.string   "initiative"
     t.boolean  "recommendation"
     t.index ["voter_guide_id"], name: "index_endorsements_on_voter_guide_id", using: :btree
+  end
+
+  create_table "guide_reports", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "voter_guide_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "reporter_id"
+    t.index ["reporter_id"], name: "index_guide_reports_on_reporter_id", using: :btree
+    t.index ["voter_guide_id"], name: "index_guide_reports_on_voter_guide_id", using: :btree
   end
 
   create_table "identities", force: :cascade do |t|
@@ -148,6 +158,8 @@ ActiveRecord::Schema.define(version: 20160912003553) do
 
   add_foreign_key "email_confirmations", "users"
   add_foreign_key "endorsements", "voter_guides"
+  add_foreign_key "guide_reports", "users", column: "reporter_id"
+  add_foreign_key "guide_reports", "voter_guides"
   add_foreign_key "password_resets", "users"
   add_foreign_key "supporters", "users"
   add_foreign_key "supporters", "voter_guides"
