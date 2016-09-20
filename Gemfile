@@ -48,6 +48,8 @@ gem 'ransack',             github: 'activerecord-hackery/ransack'
 gem 'draper',              '> 3.x'
 gem 'recaptcha', require: 'recaptcha/rails'
 
+
+
 # gem 'sass-rails',          github: 'rails/sass-rails' # For Sprockets 4
 
 # used for populating sample voter guides

@@ -1,11 +1,6 @@
 <style>
 .fixed-box{
-padding:1%;
-margin:18px;
 box-shadow:0px 0px 5px #727272;
-background-color:#DED7B5; //#A7957A;
-width:30%;
-float:left;
 }
 .media-left, .media-right, .media-body{
 display:inherit;
@@ -13,14 +8,15 @@ display:inherit;
 .first-box{
 background-color:#A7957A;
 }
-.media-right, .media > .pull-right {
-    padding-left: 0px;
+.media, .media-right, .media > .pull-right {
+    padding: 6px;margin-bottom: 10px;background-color: #DED7B5;
 }
 .underline {
     border-bottom: 3px solid #A7957A; 
   font-size:14px;
   font-weight:bold;
-  height: 65px;
+  height: 45px;
+  width:auto;
 }
 .endorsement{
 color:#756348; 
@@ -37,20 +33,23 @@ color:#756348;
 .endorsment-content{
   overflow: hidden;
   height: 90px;
-} 
+}
+.panel-heading {
+    background-color: #A7957A none repeat scroll 0 0;
+}
 </style>
 <div class="fixed-box">
 <div class="media">
-  <div class="col-md-12 media-left first-box">
+  <div class="media-left first-box">
     <div class="col-md-6 league-icon"></div>
-    <h4 class="col-md-8"><%= link_to voter_guide.name, voter_guide.presenter.show_url, data: {guide_id: voter_guide.to_param}, target: "#{'blank' if voter_guide.external_guide_url.present?}" , :style => "color:black"%></h4>
+    <h4 class="col-md-9"><%= link_to voter_guide.name, voter_guide.presenter.show_url, data: {guide_id: voter_guide.to_param}, target: "#{'blank' if voter_guide.external_guide_url.present?}" , :style => "color:black" %></h4> 
   </div>
   <div class="col-md-12 media-right voterguide-summary">
 
     <div class="underline">
-    <div><%= voter_guide.presenter.location_text %></div>
-    <div>posted by <%= voter_guide.author.name %> / <%= voter_guide.election_date.strftime("%B %e, %Y")%>
-      / <%= voter_guide.presenter.supporter_text %></div>
+      <div><%= voter_guide.presenter.location_text %></div>
+      <div>posted by <%= voter_guide.author.name %> / <%= voter_guide.election_date.strftime("%B %e, %Y")%>
+        / <%= voter_guide.presenter.supporter_text %></div>
       </div>
 
     <% if voter_guide.presenter.show_endorsements? %>
@@ -67,5 +66,3 @@ color:#756348;
   </div>
 </div>
 </div>
-
-

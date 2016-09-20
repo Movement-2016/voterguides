@@ -12,7 +12,7 @@
   </small>
   <p>&nbsp;</p>
 
-  <div class="lowlight-header">
+  <div class="lowlight-header visible-md-block visible-lg-block">
     <div class="searchable_map_container">
       <div id="searchable_map"></div>
     </div>
@@ -29,7 +29,7 @@
     <h2>Featured Guides</h2>
       <div class="offset-list">
         <% VoterGuide.recommended.upcoming.includes(:supporters, :endorsements).published.order(published_at: :desc).limit(10).each do |vg| %>
-          <%= render 'voter_guides/list_info', voter_guide: vg %>
+          <%= render 'voter_guides/list_info_front_page', voter_guide: vg %>
         <% end %>
       </div>
     </div>
@@ -40,7 +40,7 @@
       <h2>Recent Guides</h2>
       <div class="offset-list">
         <% VoterGuide.upcoming.published.includes(:supporters, :endorsements).order(published_at: :desc).limit(10).each do |vg| %>
-          <%= render 'voter_guides/list_info', voter_guide: vg %>
+          <%= render 'voter_guides/list_info_front_page', voter_guide: vg %>
         <% end %>
       </div>
     </div>

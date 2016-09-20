@@ -54,6 +54,12 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+
+
+ENV['RECAPTCHA_PUBLIC_KEY']  = '6Lew6ykTAAAAAJvfjmaiePCqrmbxft3DwsloPCTn'
+
+ENV['RECAPTCHA_PRIVATE_KEY'] = '6Lew6ykTAAAAAOhdmX7ongFs4zbibYN9IVTPErc8'
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 

@@ -1,6 +1,19 @@
+<style>
+.panel-heading {
+    background-color: #A7957A ;
+}
+.collapse.in {
+    background-color: #DED7B5; 
+    border-radius: 0 0 15px 15px;
+}
+.panel-group .panel {
+    border-radius: 15px;
+    margin-bottom: 6px;
+}
+</style>
 <div class="panel">
   <div class="panel-heading" role="tab" id="endorsement--heading-<%= endorsement.to_param %>">
-    <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-endorsement-<%= endorsement.to_param %>" aria-expanded="false" aria-controls="collapse-endorsement-<%= endorsement.to_param %>">
+    <a class="collapsed" role="button" style="color:black;" data-toggle="collapse" href="#collapse-endorsement-<%= endorsement.to_param %>" aria-expanded="false" aria-controls="collapse-endorsement-<%= endorsement.to_param %>">
       <% if endorsement.highlight %>
         <span class="glyphicon glyphicon-star"></span>
       <% end %>
