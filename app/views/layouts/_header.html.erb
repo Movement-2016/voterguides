@@ -17,18 +17,26 @@
           <% end %>
         </div>
         <div class="collapse navbar-collapse theballot--navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right" style="margin-right:20px;"> 
             <li><%= link_to "Create a Guide", new_voter_guide_path, class: 'user_nav--item' %></li>
             <% if current_user %>
               <li><%= link_to current_user.name, account_path(current_user), class: 'user_nav--item' %></li>
               <li><%= link_to "Log out", logout_path, class: 'user_nav--item' %></li>
             <% else %>
               <li><%= link_to "Log in  |  Sign Up", new_session_path, class: 'user_nav--item' %></li>
+
+   
+              <li><div class= "leaguelogo"></div> </li>
             <% end %>
+
+
           </ul>
         </div>
       </div>
     </nav>
   </div>
 </header>
-<div class="localballot--header--bottom_stripes ">&nbsp;</div>
+<div class="localballot--header--bottom_stripes"></div>
+<div class="localballot--header--bottom_stripes"></div>
+<div style="padding:10px;width:100%;height:10px;"></div>
+

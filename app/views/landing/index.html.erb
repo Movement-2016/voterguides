@@ -12,7 +12,7 @@
   </small>
   <p>&nbsp;</p>
 
-  <div class="lowlight-header visible-md-block visible-lg-block">
+  <div class="lowlight-header1 visible-md-block visible-lg-block" > 
     <div class="searchable_map_container">
       <div id="searchable_map"></div>
     </div>
@@ -50,25 +50,26 @@
 
 <div class="col-md-4 text-center">
   <div class="shadowed-block">
-    <h2 class="lowlight-header">
-      <%= VoterGuide.upcoming.published.count %> guides and counting...
-    </h2>
+    <h3 class="lowlight-header">
+      502 guides and counting...
+    </h3>
     <div class="lowlight-block">
-      <h1>Browse Voter Guides</h1>
+      <h1><b>Browse Voter Guides</b></h1>
       <p>
         <%= link_to "create new guide", new_voter_guide_path, class: "btn btn-theballot btn-lg", role: "button" %>
       </p>
       <p>
-        <%= link_to "view more guides", guide_collections_path, class: "btn btn-theballot btn-lg", role: "button" %>
+        <%= link_to "view more guides", voter_guides_path, class: "btn btn-theballot btn-lg", role: "button" %>
       </p>
     </div>
   </div>
 
   <div class="lowlight-block text-left shadowed-block visible-md-block visible-lg-block">
 
-    <h4>Do-It-Yourself Local Voter Guides</h4>
+    <h4><b>Do-It-Yourself Local Voter Guides</b></h4>
     <p>
-      Your vote is powerful. But ballots can be confusing! Find a voter guide for your area, or create your own guide that other people can use. Easy!
+  Honestly NO ONE knows how to vote down ballot! Find a LOCAL voter guide for your area, or create a guide that other people can use. Easy!
+
     </p>
 
   </div>

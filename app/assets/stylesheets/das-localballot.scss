@@ -21,7 +21,7 @@ body {
   height: 13px;
   border-top: 6px solid #e1f7b4;
   border-bottom: 6px solid #8fb34a;
-  margin-bottom:10px;
+
 }
 
 .navbar--logo {
@@ -149,4 +149,22 @@ body {
 .partner-logo {
   width: 150px;
   margin: 20px 30px;
+}
+
+
+.leaguelogo {
+  background-size: cover;
+  background-image: image-url("localballot/LeagueLogo.png");
+    border-radius: 10px;
+    height: 75px;
+    margin-top: -16px;
+    position: relative;
+    width: 145px;
+}
+
+
+.lowlight-header1 {
+  background-size: cover;
+  background-image: image-url("localballot/us_map.jpg");
+
 }
