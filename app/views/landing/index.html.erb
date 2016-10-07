@@ -2,19 +2,18 @@
   <div class="lowlight-header">
     <%= simple_form_for :search, url: voter_guides_path, method: :get do |f| %>
       <%= f.input :state, label: false, autofocus: true,
-                  collection: GeographyPresenter::ELIGIBLE_STATES, include_blank: "Select State or click on map below",
+                  collection: GeographyPresenter::ELIGIBLE_STATES, include_blank: "Select State or click on map below to view local voter guides",
                   input_html: {id: "state_quickselect"} %>
     <% end %>
   </div>
 
   <small>
-    Click on the map below or use the dropdown menu to view voter guides from the state
   </small>
   <p>&nbsp;</p>
 
   <div class="lowlight-header1 visible-md-block visible-lg-block" > 
     <div class="searchable_map_container">
-      <div id="searchable_map"></div>
+      <div id="searchable_map" style="padding:15px;"></div>
     </div>
   </div>
   <p>&nbsp;</p>
@@ -96,4 +95,13 @@
       <%= image_tag 'localballot/student_power_logo.png', alt: "Student Power", class: 'partner-logo' %>
     </div>
   </div>
+
+  <h5>
+
+  Local Ballot is a voter guide platform paid for by All Hands on Deck Network, not by any candidate or candidate's committee. All views expressed here represent the views of individual voter guide creators, not necessarily of Local Ballot or All Hands on Deck Network.
+
+</h5>
+
 </div>
+
+
