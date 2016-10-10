@@ -1,5 +1,5 @@
 body {
-  background: #e9e0c2;
+  background: #15293D;
 }
 
 .localballot--header {
@@ -35,11 +35,17 @@ body {
 }
 
 .navbar--logo {
+
+}
+
+.navbar--log {
   line-height: 1.8em;
   font-size: 2em;
   color: white;
   font-family: 'Arvo';
+    background-image: image-url("localballot/logo.png");
 }
+
 
 .navbar.theballot--navbar {
   margin-bottom: 0;

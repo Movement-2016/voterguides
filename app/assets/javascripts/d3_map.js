@@ -2,6 +2,7 @@ function initD3Map(selector) {
   //Width and height
   var map_target = $(selector);
 
+
   if(map_target.length == 0) {
     return;
   }
@@ -41,9 +42,15 @@ function initD3Map(selector) {
       .append("path")
       .attr("d", path)
       .attr("stroke", "#e2eee1")
-      .attr("stroke-width", 0.3)
+      .attr("stroke-width", 2)
       .attr("class", 'searchable_map_element')
+        
   };
+
+
+
 
   d3.json("/maps/us-states.json", render)
 }
+
+

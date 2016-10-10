@@ -12557,7 +12557,7 @@ var   keyPrefix$1 = "$";
           .attr("class", "selection")
           .attr("cursor", cursors.selection)
           .attr("fill", "#777")
-          .attr("fill-opacity", 0.3)
+          .attr("fill-opacity", 2.3)
           .attr("stroke", "#fff")
           .attr("shape-rendering", "crispEdges");
 
