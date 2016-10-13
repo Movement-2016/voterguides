@@ -168,11 +168,14 @@ body {
 .leaguelogo {
   background-size: cover;
   background-image: image-url("localballot/LeagueLogo.png");
+  background-size: cover;
     border-radius: 10px;
-    height: 75px;
-    margin-top: -34px;
+    height: 64px;
+    margin-top: -8px;
     position: relative;
-    width: 145px;
+    width: 123px;
+   margin-right:-40px
+
 }
 
 

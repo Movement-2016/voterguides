@@ -43,12 +43,22 @@ function initD3Map(selector) {
       .attr("d", path)
       .attr("stroke", "#e2eee1")
       .attr("stroke-width", 2)
-      .attr("class", 'searchable_map_element')
-        
-  };
-
-
-
+      .attr("class", 'searchable_map_element') 
+      //.attr("text-anchor","middle")//my code
+      //.attr("text-anchor" , d.properties.stateabbrev)//my code  
+      //.attr("text-anchor","middle")
+      //.append("svg:text")
+      //.text(function(d3){
+      // return d3.properties.stateabbrev; 
+      //  node.append("text")
+      //  .attr("x", CalculateX(nodeType))             
+      // .attr("y", CalculateY(nodeType))
+      // .attr("text-anchor", "middle")  
+      // .style("font-size", "14px")
+      //.attr('fill','#cccccc')
+      // .text(label);
+      //  return node;
+  }; 
 
   d3.json("/maps/us-states.json", render)
 }
