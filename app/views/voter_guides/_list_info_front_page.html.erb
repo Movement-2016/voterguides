@@ -44,7 +44,7 @@ color:#756348;
     <div class="col-md-6 league-icon"></div>
     <h4 class="col-md-9"><%= link_to voter_guide.name, voter_guide.presenter.show_url, data: {guide_id: voter_guide.to_param}, target: "#{'blank' if voter_guide.external_guide_url.present?}" , :style => "color:black" %></h4> 
   </div>
-  <div class="col-md-12 media-right voterguide-summary">
+  <div class="col-md-12 media-right voterguide-summary ">
 
     <div class="underline">
       <div><%= voter_guide.presenter.location_text %></div>
