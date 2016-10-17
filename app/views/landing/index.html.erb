@@ -11,7 +11,7 @@
   </small>
   <p>&nbsp;</p>
 
-  <div class="lowlight-header1 visible-md-block visible-lg-block" > 
+  <div class="lowlight-header1 visible-sm-block visible-md-block visible-lg-block" >
     <div class="searchable_map_container">
       <div id="searchable_map" style="padding:20px;padding-top:0px;"></div>
     </div>
@@ -50,7 +50,11 @@
 <div class="col-md-4 text-center">
   <div class="shadowed-block">
     <h3 class="lowlight-header">
-      502 guides and counting...
+    <!--  502 guides and counting... -->
+
+     <%= VoterGuide.upcoming.published.count %> guides and counting...
+
+
     </h3>
     <div class="lowlight-block">
       <h1><b>Browse Voter Guides</b></h1>
@@ -90,23 +94,36 @@
   <div class="highlight-block">
     <h2>Partners</h2>
     <div class="text-center">
-      <%= image_tag 'localballot/gamechanger_logo.png', alt: "Gamechanger Labs", class: 'partner-logo' %>
-      <%= image_tag 'localballot/vote_mob_logo.png', alt: "Vote Mob", class: 'partner-logo' %>
-      <%= image_tag 'localballot/student_power_logo.png', alt: "Student Power", class: 'partner-logo' %>
 
+      <%= link_to "#" do %>
+      <%= image_tag 'localballot/gamechanger_logo.png', alt: "Gamechanger Labs", class: 'partner-logo' %>
+       <% end %> 
+
+      <%= link_to "http://votemob.org/" do %>
+      <%= image_tag 'localballot/vote_mob_logo.png', alt: "Vote Mob", class: 'partner-logo' %>
+      <% end %> 
+
+      <%= link_to "#" do %>
+      <%= image_tag 'localballot/student_power_logo.png', alt: "Student Power", class: 'partner-logo' %>
+      <% end %> 
+
+      <%= link_to "#" do %>
       <%= image_tag 'localballot/LeagueLogo.png', alt: "LeagueLogo", class: 'partner-logo' %>
+      <% end %> 
+
+      <%= link_to "https://movement2016.org/" do %>
       <%= image_tag 'localballot/movement2016.png', alt: "Movement 2016", class: 'partner-logo' %>
+      <% end %> 
 
     </div>
   </div>
 
-<div class="col-xs-12">
- <center>
-  <h6 style=" text-align:center;font-size:10px;width:799px;">
+<div class="container col-xs-12 col-md-9 text-center" style="float:none;text-align:center;">
+ <!-- <center>
+ <h6 style=" text-align:center;font-size:10px;width:799px;"> -->
+    <div class="col-xs-12 col-md-12" style="text-align:center;font-size:10px;padding:0px">
 Local Ballot is a voter guide platform paid for by All Hands on Deck Network, not by any candidate or candidate's committee. All views expressed here represent the views of individual voter guide creators, not necessarily of Local Ballot or All Hands on Deck Network. Treasurer: William Wimsatt 37 Kensington Ave, Northampton MA 01060.
-</h6>
-</center>
-</div>
 </div>
 
-
+</div>
+</div>

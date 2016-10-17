@@ -57,7 +57,14 @@ function initD3Map(selector) {
       // .style("font-size", "14px")
       //.attr('fill','#cccccc')
       // .text(label);
-      //  return node;
+       //  return node;
+  holder.append("a")         // append text
+    .style("fill", "black")   // fill the text with the colour black
+    .attr("x", 200)           // set x position of left side of text
+    .attr("y", 100)           // set y position of bottom of text
+    .attr("dy", ".35em")           // set offset y position
+    .attr("text-anchor", "middle") // set anchor y justification
+    .text("Hello World");          // define the text to display
   }; 
 
   d3.json("/maps/us-states.json", render)

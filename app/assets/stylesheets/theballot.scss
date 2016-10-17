@@ -32,8 +32,12 @@ body {
   padding-bottom: 30px;
   margin-bottom: 10px;
 }
-
+/*
 .navbar-nav > li > a.user_nav--item  {
   color: #fffa86;
   font-weight: bold;
+}*/
+
+.theballot--navbar .navbar-nav > li > a {
+   color:red;
 }
