@@ -174,13 +174,58 @@ body {
     margin-top: -8px;
     position: relative;
     width: 123px;
-   margin-right:-40px
+   margin-right:40px
 
 }
-
-
 .lowlight-header1 {
   background-size: cover;
   background-image: image-url("localballot/us_map.jpg");
+}
+.notshow{
+  display:none;
+}
+.deskshow{
+  display:block;
+}
+@media (max-width: 768px) {
+.theballot--navbar .navbar-nav > li > a {
+   color:red;
+      margin-top: 0px;
+    padding-bottom: none;  padding: 4px;
+}
+.deskshow{
+  display:none;
+}
+.notshow{
+  display:block;
+}  
+.siz{
+ width:34%; 
+ float:left;
+} 
+.siz1{
+ width:50%;  
+} 
 
+.siz2{
+ width:66%; 
+ float:left; 
+} 
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: #eeeeee;
+    text-decoration: none;padding: 4px;
+}
+a:hover, a:focus {
+    color: #23527c;
+    text-decoration:none;
+    background-color: #eeeeee;
+    text-decoration: none;padding: 4px;
+}
+a:active, a:hover {
+    outline: 0 none;
+}
+.user_nav--item { 
+  font-family: 'Lato', 'Helvetica', 'sans-serif';  padding: 4px;
+  border-radius:5px;
+}
 }
