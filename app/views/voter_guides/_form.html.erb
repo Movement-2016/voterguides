@@ -5,7 +5,15 @@
 <%= form.input :statewide, label: "Statewide Guide", hint:"Statewide guides will not be connected to a specific city" %>
 <%= form.input :target_state, label: "Guide State", collection: GeographyPresenter::ELIGIBLE_STATES, include_blank: "Select State" %>
 <%= form.input :election_date, as: :datepicker %>
+
+<h5>There are three ways to create a guide: upload a document, link to a guide on another website, or on the next page, enter individual endorsements. </h5>
+
 <%= content_tag :div, nil, id:"voterguide_pdf_uploader", data: @upload_guide_target.data %>
+
+
 <%= form.input :external_guide_url, label: "Upload Guide", as: :file, input_html: {accept: ".pdf", id: "guide_uploader"} %>
+
+<h5>There are three ways to create a guide: upload a document, link to a guide on another website, or on the next page, enter individual endorsements. </h5>
+
 <%= form.input :external_guide_url %>
 <%= form.input :description, label: "What inspired you to write this guide?" %>

@@ -11,7 +11,7 @@ class VoterGuide < ApplicationRecord
               scope: [:target_city, :target_state],
               message: "should be unique for your area"}
   validates :target_state, presence: true
-  validates :target_city, presence: true
+  validates :target_city, presence: false
   validates :election_date, presence: true
   validates :external_guide_url,
             format: { with: /\A#{URI::regexp(['http', 'https'])}\z/,
