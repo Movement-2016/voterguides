@@ -1,6 +1,6 @@
 require 'csv'
 
-FactoryGirl.define do
+FactoryBot.define do
   sequence :current_order
   sequence :current_location do
     FakeLocation.new
@@ -35,6 +35,7 @@ FactoryGirl.define do
     target_city { current_location.city }
     target_state { current_location.state }
     election_date { 3.months.from_now }
+    author
 
     trait :with_endorsements do
       after(:create) do |guide|

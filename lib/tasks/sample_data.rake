@@ -1,14 +1,14 @@
 namespace :sample_data do
   desc "generate sample voter guides for testing"
   task populate: :environment do
-    require './test/support/factory_girl.rb'
+    require './test/support/factory_bot.rb'
     @users = []
     @voter_guides = []
     5.times do
-      @users << FactoryGirl.create(:user, name: Faker::Name.name)
+      @users << FactoryBot.create(:user, name: Faker::Name.name)
     end
     20.times do
-      @voter_guides << FactoryGirl.create(:voter_guide, :with_endorsements, :published, author: @users[rand(5)], recommended_at: (Date.today if rand(10) == 0))
+      @voter_guides << FactoryBot.create(:voter_guide, :with_endorsements, :published, author: @users[rand(5)], recommended_at: (Date.today if rand(10) == 0))
     end
 
   end
